@@ -15,13 +15,27 @@ Developer-facing notes for ClipMenu. User-facing release notes live in
 
   Russian has three plural forms and these tables are not `.stringsdict`, so counts read
   "Label: %d". Where the code prints the number itself and appends a key, the translation uses a
-  count-neutral form ("шт.", "симв."). The backup row's "folders" and "snippets" have no such
-  form, so they read "<n> папок", which is wrong after 1 to 4, until that call site formats the
-  label itself.
+  count-neutral form ("шт.", "симв.").
 
   **Every release's What's New text now needs a Russian line too.** dragon-release-ci's exporter
   finds each `*.lproj` beside `WhatsNewConfig.swift` and fails the release when a key is missing
   from any of them, so the current `app.whatsNew.summary` and `changed1` are translated here.
+
+### Fixed
+- **Backup counts are formatted inside the translation.** The Restore sheet's version row and its
+  confirmation built "3 folders · 12 snippets" by printing the number and appending a translated
+  noun, so Russian could only say "3 папок", which is wrong after 1 to 4. They now use
+  `"Folders: %d"` and `"Snippets: %d"` (Russian "Папок: %d" and "Фрагментов: %d"; CJK keep
+  "%d 个文件夹"). The "not ClipMenu 2 backups" note became `"Items in this folder that aren't
+  ClipMenu 2 backups: %d (…)"`, which also fixes English's "1 items". `"folders"`, `"snippets"`
+  and the old note key are gone from every table. The unused `"%d folder(s)"` and
+  `"%d snippet(s)"` keys were left alone.
+- **18 strings showed English in every language.** These literal `L()` keys were defined in no
+  table, neither the app's nor DragonKit's. Most are in the Sync & Backup pane ("Sync & Backup",
+  "Backup folder", "Choose…", "Restore from Backup", …), and the rest are "Snippet", "Maximum
+  thumbnail size:", "px" and the shortcut recorder's two messages. All eight tables now carry
+  them, in the same order. `LocalizationCoverageTests` fails on any literal `L()` key a
+  translated table lacks and on any translation whose printf specifiers differ from its key's.
 
 ### Changed
 - **DragonKit 4.1.2 → 4.2.0**, which adds `DragonLanguage.ru`. CONFORMANCE §R13 reads the kit's

@@ -194,11 +194,11 @@
 "Backup saved." = "Sauvegarde enregistrée.";
 "No changes since the last backup." = "Aucune modification depuis la dernière sauvegarde.";
 "No backups yet." = "Aucune sauvegarde pour l'instant.";
-"items in this folder aren't ClipMenu 2 backups (for example, exports from an older app)." = "éléments de ce dossier ne sont pas des sauvegardes ClipMenu 2 (par exemple, des exportations d'une app plus ancienne).";
+"Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "Éléments de ce dossier qui ne sont pas des sauvegardes ClipMenu 2 : %d (par exemple, des exportations d'une app plus ancienne).";
 "Restore this backup?" = "Restaurer cette sauvegarde ?";
 "This replaces all your current snippets and folders. Your current snippets are backed up first." = "Cela remplace tous vos extraits et dossiers actuels. Vos extraits actuels sont d'abord sauvegardés.";
-"folders" = "dossiers";
-"snippets" = "extraits";
+"Folders: %d" = "Dossiers : %d";
+"Snippets: %d" = "Fragments : %d";
 "Automatic" = "Automatique";
 "Manual" = "Manuelle";
 "Before restore" = "Avant restauration";
@@ -206,6 +206,24 @@
 "Couldn't save your snippets. Your last change isn't saved yet." = "Impossible d'enregistrer vos fragments. Votre dernière modification n'est pas encore enregistrée.";
 "This version was made on a newer app version and can't be restored." = "Cette version a été créée avec une version plus récente de l'app et ne peut pas être restaurée.";
 "Restore failed. Your current data was not changed." = "Échec de la restauration. Vos données actuelles n'ont pas été modifiées.";
+"Sync & Backup" = "Synchronisation et sauvegarde";
+"Backup folder" = "Dossier de sauvegarde";
+"Choose…" = "Choisir…";
+"Change…" = "Modifier…";
+"Choose" = "Choisir";
+"Snippets and settings are backed up to this folder (the newest 20 are kept). Put it in Dropbox, iCloud Drive, or Google Drive to sync across your Macs or set up a new Mac." = "Les fragments et les réglages sont sauvegardés dans ce dossier (les 20 plus récentes sont conservées). Placez-le dans Dropbox, iCloud Drive ou Google Drive pour synchroniser vos Mac ou configurer un nouveau Mac.";
+"Back up automatically when quitting" = "Sauvegarder automatiquement en quittant";
+"Restore…" = "Restaurer…";
+"Backup failed. Try again later." = "Échec de la sauvegarde. Réessayez plus tard.";
+"Choose a backup folder first." = "Choisissez d'abord un dossier de sauvegarde.";
+"Restore from Backup" = "Restaurer une sauvegarde";
+"Couldn't load backups from the folder." = "Impossible de charger les sauvegardes du dossier.";
+"Back up snippets and settings to a folder you choose in Settings — put it in Dropbox or iCloud Drive to sync across Macs." = "Sauvegardez vos fragments et réglages dans un dossier choisi dans les Réglages — placez-le dans Dropbox ou iCloud Drive pour synchroniser vos Mac.";
+"Maximum thumbnail size:" = "Taille maximale des vignettes :";
+"px" = "px";
+"Snippet" = "Fragment";
+"Already used by %@" = "Déjà utilisé par %@";
+"Shortcut unavailable" = "Raccourci indisponible";
 
 /* First-run setup wizard */
 "Your clipboard history and snippets, one keystroke away." = "Votre historique de presse-papiers et vos extraits, à une frappe près.";

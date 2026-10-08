@@ -194,11 +194,11 @@
 "Backup saved." = "備份已儲存。";
 "No changes since the last backup." = "自上次備份以來沒有變更。";
 "No backups yet." = "尚無備份。";
-"items in this folder aren't ClipMenu 2 backups (for example, exports from an older app)." = "個項目不是 ClipMenu 2 備份（例如，來自舊版應用程式的匯出檔案）。";
+"Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "此資料夾中有 %d 個項目不是 ClipMenu 2 備份（例如，來自舊版應用程式的匯出檔案）。";
 "Restore this backup?" = "要還原此備份嗎？";
 "This replaces all your current snippets and folders. Your current snippets are backed up first." = "這會取代您目前所有的片段與資料夾。您目前的片段會先備份。";
-"folders" = "個資料夾";
-"snippets" = "個片段";
+"Folders: %d" = "%d 個資料夾";
+"Snippets: %d" = "%d 個片段";
 "Automatic" = "自動";
 "Manual" = "手動";
 "Before restore" = "還原前";
@@ -206,6 +206,24 @@
 "Couldn't save your snippets. Your last change isn't saved yet." = "無法儲存片段，你的最後一次變更尚未儲存。";
 "This version was made on a newer app version and can't be restored." = "此版本由較新版本的應用程式建立，無法還原。";
 "Restore failed. Your current data was not changed." = "還原失敗。你目前的資料未被變更。";
+"Sync & Backup" = "同步與備份";
+"Backup folder" = "備份資料夾";
+"Choose…" = "選擇…";
+"Change…" = "更改…";
+"Choose" = "選擇";
+"Snippets and settings are backed up to this folder (the newest 20 are kept). Put it in Dropbox, iCloud Drive, or Google Drive to sync across your Macs or set up a new Mac." = "片段和設定會備份到此資料夾（保留最新的 20 份）。將它放在 Dropbox、iCloud Drive 或 Google Drive 中，即可在多台 Mac 之間同步或設定新的 Mac。";
+"Back up automatically when quitting" = "結束時自動備份";
+"Restore…" = "還原…";
+"Backup failed. Try again later." = "備份失敗，請稍後再試。";
+"Choose a backup folder first." = "請先選擇備份資料夾。";
+"Restore from Backup" = "從備份還原";
+"Couldn't load backups from the folder." = "無法從資料夾載入備份。";
+"Back up snippets and settings to a folder you choose in Settings — put it in Dropbox or iCloud Drive to sync across Macs." = "將片段和設定備份到你在設定中選擇的資料夾——放在 Dropbox 或 iCloud Drive 中即可在多台 Mac 之間同步。";
+"Maximum thumbnail size:" = "最大縮圖尺寸：";
+"px" = "像素";
+"Snippet" = "片段";
+"Already used by %@" = "已被 %@ 使用";
+"Shortcut unavailable" = "快速鍵無法使用";
 
 /* First-run setup wizard */
 "Your clipboard history and snippets, one keystroke away." = "你的剪貼板記錄與片段，一個按鍵即可呼出。";

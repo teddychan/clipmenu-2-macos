@@ -195,11 +195,11 @@
 "Backup saved." = "Backup saved.";
 "No changes since the last backup." = "No changes since the last backup.";
 "No backups yet." = "No backups yet.";
-"items in this folder aren't ClipMenu 2 backups (for example, exports from an older app)." = "items in this folder aren't ClipMenu 2 backups (for example, exports from an older app).";
+"Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app).";
 "Restore this backup?" = "Restore this backup?";
 "This replaces all your current snippets and folders. Your current snippets are backed up first." = "This replaces all your current snippets and folders. Your current snippets are backed up first.";
-"folders" = "folders";
-"snippets" = "snippets";
+"Folders: %d" = "Folders: %d";
+"Snippets: %d" = "Snippets: %d";
 "Automatic" = "Automatic";
 "Manual" = "Manual";
 "Before restore" = "Before restore";
@@ -207,6 +207,24 @@
 "Couldn't save your snippets. Your last change isn't saved yet." = "Couldn't save your snippets. Your last change isn't saved yet.";
 "This version was made on a newer app version and can't be restored." = "This version was made on a newer app version and can't be restored.";
 "Restore failed. Your current data was not changed." = "Restore failed. Your current data was not changed.";
+"Sync & Backup" = "Sync & Backup";
+"Backup folder" = "Backup folder";
+"Choose…" = "Choose…";
+"Change…" = "Change…";
+"Choose" = "Choose";
+"Snippets and settings are backed up to this folder (the newest 20 are kept). Put it in Dropbox, iCloud Drive, or Google Drive to sync across your Macs or set up a new Mac." = "Snippets and settings are backed up to this folder (the newest 20 are kept). Put it in Dropbox, iCloud Drive, or Google Drive to sync across your Macs or set up a new Mac.";
+"Back up automatically when quitting" = "Back up automatically when quitting";
+"Restore…" = "Restore…";
+"Backup failed. Try again later." = "Backup failed. Try again later.";
+"Choose a backup folder first." = "Choose a backup folder first.";
+"Restore from Backup" = "Restore from Backup";
+"Couldn't load backups from the folder." = "Couldn't load backups from the folder.";
+"Back up snippets and settings to a folder you choose in Settings — put it in Dropbox or iCloud Drive to sync across Macs." = "Back up snippets and settings to a folder you choose in Settings — put it in Dropbox or iCloud Drive to sync across Macs.";
+"Maximum thumbnail size:" = "Maximum thumbnail size:";
+"px" = "px";
+"Snippet" = "Snippet";
+"Already used by %@" = "Already used by %@";
+"Shortcut unavailable" = "Shortcut unavailable";
 
 /* First-run setup wizard */
 "Your clipboard history and snippets, one keystroke away." = "Your clipboard history and snippets, one keystroke away.";

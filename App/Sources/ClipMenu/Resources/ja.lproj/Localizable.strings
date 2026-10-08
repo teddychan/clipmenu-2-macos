@@ -194,11 +194,11 @@
 "Backup saved." = "バックアップを保存しました。";
 "No changes since the last backup." = "前回のバックアップから変更はありません。";
 "No backups yet." = "まだバックアップがありません。";
-"items in this folder aren't ClipMenu 2 backups (for example, exports from an older app)." = "個の項目は ClipMenu 2 のバックアップではありません（古いアプリからの書き出しなど）。";
+"Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "このフォルダ内の %d 個の項目は ClipMenu 2 のバックアップではありません（古いアプリからの書き出しなど）。";
 "Restore this backup?" = "このバックアップを復元しますか？";
 "This replaces all your current snippets and folders. Your current snippets are backed up first." = "現在のすべてのスニペットとフォルダを置き換えます。現在のスニペットは先にバックアップされます。";
-"folders" = "フォルダ";
-"snippets" = "スニペット";
+"Folders: %d" = "%d 個のフォルダ";
+"Snippets: %d" = "%d 個のスニペット";
 "Automatic" = "自動";
 "Manual" = "手動";
 "Before restore" = "復元前";
@@ -206,6 +206,24 @@
 "Couldn't save your snippets. Your last change isn't saved yet." = "スニペットを保存できませんでした。直前の変更はまだ保存されていません。";
 "This version was made on a newer app version and can't be restored." = "このバージョンは新しいバージョンのアプリで作成されたため、復元できません。";
 "Restore failed. Your current data was not changed." = "復元に失敗しました。現在のデータは変更されていません。";
+"Sync & Backup" = "同期とバックアップ";
+"Backup folder" = "バックアップフォルダ";
+"Choose…" = "選択…";
+"Change…" = "変更…";
+"Choose" = "選択";
+"Snippets and settings are backed up to this folder (the newest 20 are kept). Put it in Dropbox, iCloud Drive, or Google Drive to sync across your Macs or set up a new Mac." = "スニペットと設定はこのフォルダにバックアップされます（最新の 20 件を保持）。Dropbox、iCloud Drive、Google Drive に置くと、複数の Mac 間で同期したり、新しい Mac をセットアップしたりできます。";
+"Back up automatically when quitting" = "終了時に自動でバックアップ";
+"Restore…" = "復元…";
+"Backup failed. Try again later." = "バックアップに失敗しました。後でもう一度お試しください。";
+"Choose a backup folder first." = "先にバックアップフォルダを選択してください。";
+"Restore from Backup" = "バックアップから復元";
+"Couldn't load backups from the folder." = "フォルダからバックアップを読み込めませんでした。";
+"Back up snippets and settings to a folder you choose in Settings — put it in Dropbox or iCloud Drive to sync across Macs." = "スニペットと設定は、設定で選んだフォルダにバックアップできます。Dropbox や iCloud Drive に置けば Mac 間で同期できます。";
+"Maximum thumbnail size:" = "サムネイルの最大サイズ：";
+"px" = "px";
+"Snippet" = "スニペット";
+"Already used by %@" = "%@ で使用中";
+"Shortcut unavailable" = "このショートカットは使用できません";
 
 /* First-run setup wizard */
 "Your clipboard history and snippets, one keystroke away." = "クリップボード履歴とスニペットを、ワンキーで。";

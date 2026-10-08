@@ -321,7 +321,7 @@ struct RestoreVersionsView: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(L("No backups yet.")).foregroundStyle(.secondary)
                     if otherFiles > 0 {
-                        Text("\(otherFiles) " + L("items in this folder aren't ClipMenu 2 backups (for example, exports from an older app)."))
+                        Text(String(format: L("Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)."), otherFiles))
                             .font(.caption).foregroundStyle(.secondary)
                     }
                 }
@@ -330,7 +330,7 @@ struct RestoreVersionsView: View {
                     ForEach(versions) { v in
                         VStack(alignment: .leading, spacing: 2) {
                             Text(Self.dateFormat.string(from: v.effectiveDate))
-                            Text("\(kindLabel(v.kind)) · \(v.folderCount) \(L("folders")) · \(v.snippetCount) \(L("snippets")) · \(v.deviceName)")
+                            Text(versionDetail(v))
                                 .font(.caption).foregroundStyle(.secondary)
                         }
                         .tag(v.id)
@@ -374,8 +374,17 @@ struct RestoreVersionsView: View {
     /// current snippets are safely backed up before the destructive replace.
     private func confirmMessage(_ v: BackupVersionMeta) -> String {
         let when = Self.dateFormat.string(from: v.effectiveDate)
-        let detail = "\(kindLabel(v.kind)) · \(v.folderCount) \(L("folders")) · \(v.snippetCount) \(L("snippets")) · \(v.deviceName)"
+        let detail = versionDetail(v)
         return "\(when)\n\(detail)\n\n" + L("This replaces all your current snippets and folders. Your current snippets are backed up first.")
+    }
+
+    /// "Manual · Folders: 3 · Snippets: 12 · Mac". Each count sits inside its own
+    /// format string, so a language with several plural forms can word it count-neutrally.
+    private func versionDetail(_ v: BackupVersionMeta) -> String {
+        [kindLabel(v.kind),
+         String(format: L("Folders: %d"), v.folderCount),
+         String(format: L("Snippets: %d"), v.snippetCount),
+         v.deviceName].joined(separator: " · ")
     }
 
     private func kindLabel(_ kind: BackupKind) -> String {
