@@ -15,7 +15,7 @@ JavaScript text actions, and folder-based backup of your settings come with it.
 
 ![Clipboard history menu](docs/images/menu-history.png)
 
-#### Settings, in any of seven languages
+#### Settings, in any of eight languages
 
 ![General settings](docs/images/settings-general.png)
 
@@ -119,8 +119,8 @@ gone. The App Store build is sandboxed, so its files live in
 - **Folder-based backup and sync** — point Settings ▸ Sync & Backup at a folder to
   back up snippets and settings; put that folder in Dropbox, iCloud Drive, or Google
   Drive to carry them between Macs. No account, no CloudKit.
-- **Seven languages** — English, Simplified and Traditional Chinese, Japanese, Korean,
-  Spanish, and French, switchable without restarting.
+- **Eight languages** — English, Simplified and Traditional Chinese, Japanese, Korean,
+  Spanish, French, and Russian, switchable without restarting.
 - **Launch at login** and a status-bar item you can hide.
 
 ## Actions and snippets

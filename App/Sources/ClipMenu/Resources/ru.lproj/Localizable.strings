@@ -1,0 +1,298 @@
+/* ClipMenu UI strings — Russian. Keys and their order mirror en.lproj.
+   Terminology follows DragonKit's ru.lproj and Ice 2's (teddychan/ice-2#132):
+   Строка меню, Системные настройки, Универсальный доступ, Правка.
+   Russian has three plural forms, so counts are phrased "Label: %d"; a key
+   that follows a number the code prints itself uses a count-neutral form
+   ("шт.", "симв.") where one exists. "folders" / "snippets" have none: the
+   backup row prints "<n> папок", which is wrong after 1–4 until that call
+   site formats "Папок: %d" itself. */
+
+/* General preferences */
+"Launch on Login" = "Запускать при входе в систему";
+"Automatically check for updates" = "Автоматически проверять наличие обновлений";
+"Check for Updates Now…" = "Проверить обновления…";
+"Input \"⌘ + V\" after menu item selection" = "Нажимать «⌘ + V» после выбора пункта меню";
+"Sort history order by:" = "Порядок сортировки истории:";
+"Date created" = "Дата создания";
+"Date last used" = "Дата последнего использования";
+"Max clipboard history size:" = "Макс. размер истории буфера обмена:";
+"items" = "шт.";
+"Delete older clipboard history?" = "Удалить старые элементы истории буфера обмена?";
+"%d older clips will be deleted from your history. This can't be undone." = "Старые элементы, которые будут удалены из истории: %d. Это действие нельзя отменить.";
+"characters" = "симв.";
+"Time interval to observe the clipboard:" = "Интервал проверки буфера обмена:";
+"Time interval" = "Интервал";
+"Save clipboard history on quit" = "Сохранять историю буфера обмена при завершении";
+"Status Bar icon style:" = "Значок в строке меню:";
+"None" = "Нет";
+"Show" = "Показывать";
+"Exclude Applications" = "Исключённые приложения";
+"Define Exclude Options…" = "Настроить исключения…";
+"Export clipboard history as:" = "Экспорт истории буфера обмена:";
+"Single file" = "В один файл";
+"Multiple files" = "В несколько файлов";
+"separator:" = "разделитель:";
+"New Line" = "Перевод строки";
+"Carriage Return and New Line" = "Возврат каретки и перевод строки";
+"Carriage Return" = "Возврат каретки";
+"Tab" = "Табуляция";
+"Space" = "Пробел";
+"Export…" = "Экспортировать…";
+
+/* Exclude-applications sheet */
+"Exclude these applications:" = "Исключить эти приложения:";
+"Other…" = "Другое…";
+"Done" = "Готово";
+
+/* Menu preferences */
+"Clipboard History" = "История буфера обмена";
+"Number of items place inline:" = "Элементов в основном меню:";
+"Number of items place inside a folder:" = "Элементов в одной папке:";
+"Number of characters in the menu:" = "Символов в пункте меню:";
+"Mark menu items with numbers" = "Нумеровать пункты меню";
+"Add key equivalents to numeric keys" = "Назначить пунктам цифровые клавиши";
+"Show labels to indicate item types" = "Показывать метки типа элемента";
+"Add a menu item to clear clipboard history" = "Добавить пункт меню для очистки истории";
+"Show alert panel before clear history" = "Запрашивать подтверждение перед очисткой истории";
+"Show tool tip on a menu item" = "Показывать подсказку для пункта меню";
+"Max length of tool tip string:" = "Макс. длина подсказки:";
+"Appearance" = "Оформление";
+"Change font size in the menu" = "Изменить размер шрифта в меню";
+"Font size:" = "Размер шрифта:";
+"Fit to the icon size" = "По размеру значка";
+"Select" = "Выбрать";
+"Size:" = "Размер:";
+"Icon" = "Значок";
+"Show Icon in the Menu" = "Показывать значки в меню";
+"Icon size:" = "Размер значка:";
+"Show Image" = "Показывать изображения";
+"Width:" = "Ширина:";
+"Height:" = "Высота:";
+"Snippets' position:" = "Положение фрагментов:";
+"Above the clipboard history" = "Над историей буфера обмена";
+"Below the clipboard history" = "Под историей буфера обмена";
+"Group snippets under one menu" = "Объединить фрагменты в одно подменю";
+
+/* Type preferences */
+"Select clipboard types to store:" = "Сохранять следующие типы данных:";
+"Plain Text" = "Простой текст";
+"Rich Text Format (RTF)" = "Форматированный текст (RTF)";
+"Filenames" = "Имена файлов";
+"TIFF Image" = "Изображение TIFF";
+"Rich Text Format Directory (RTFD)" = "Форматированный текст с вложениями (RTFD)";
+
+/* Action preferences */
+"Enable Action" = "Включить действия";
+"Invoke the first action immediately if there is only one action" = "Сразу выполнять действие, если оно единственное";
+"Click behavior" = "Действия по щелчку";
+"Control-click / right-click:" = "Щелчок с Control / правой кнопкой:";
+"Shift-click:" = "Щелчок с Shift:";
+"Option-click:" = "Щелчок с Option:";
+"Command-click:" = "Щелчок с Command:";
+"Pop up Action Menu" = "Открыть меню действий";
+"Actions" = "Действия";
+"Built-in" = "Встроенные";
+"Script" = "Скрипт";
+"User Script" = "Пользовательский скрипт";
+
+/* Settings window / tabs */
+"%@ Settings" = "Настройки %@";
+"General" = "Основные";
+"Menu" = "Меню";
+"Type" = "Типы";
+"Action" = "Действия";
+"Shortcuts" = "Сочетания клавиш";
+"Backup" = "Резервное копирование";
+"Main Menu:" = "Главное меню:";
+"History Menu:" = "Меню истории:";
+"Snippets Menu:" = "Меню фрагментов:";
+"Type shortcut…" = "Нажмите сочетание…";
+
+/* Main menu items */
+"Clear History" = "Очистить историю";
+"Edit Snippets…" = "Изменить фрагменты…";
+"Preferences…" = "Настройки…";
+"Quit ClipMenu 2" = "Завершить ClipMenu 2";
+"Snippets" = "Фрагменты";
+"History" = "История";
+"(Image)" = "(Изображение)";
+"(PDF)" = "(PDF)";
+"(Filenames)" = "(Имена файлов)";
+
+/* Clear-history confirmation */
+"Are you sure you want to clear your clipboard history?" = "Вы действительно хотите очистить историю буфера обмена?";
+"Cancel" = "Отменить";
+"OK" = "ОК";
+
+/* Built-in action tool tips */
+"Remove the clip from the clipboard history" = "Удалить элемент из истории буфера обмена";
+"Paste the clip as Plain Text" = "Вставить элемент как простой текст";
+"Paste the clip as POSIX File Path" = "Вставить элемент как путь POSIX";
+
+/* Edit menu */
+"Edit" = "Правка";
+"Undo" = "Отменить";
+"Redo" = "Повторить";
+"Cut" = "Вырезать";
+"Copy" = "Скопировать";
+"Paste" = "Вставить";
+"Select All" = "Выбрать все";
+
+/* Login-item prompt */
+"Launch ClipMenu 2 on system startup?" = "Запускать ClipMenu 2 при входе в систему?";
+"You can change this setting in the Preferences if you want." = "Этот параметр можно изменить в настройках.";
+"Launch on system startup" = "Запускать при входе в систему";
+"Don't Launch" = "Не запускать";
+
+/* Snippet editor */
+"Import…" = "Импортировать…";
+"No Folder Selected" = "Папка не выбрана";
+"untitled folder" = "папка без названия";
+"untitled snippet" = "фрагмент без названия";
+
+"Last synced: %@" = "Последняя синхронизация: %@";
+"Waiting for first sync…" = "Ожидание первой синхронизации…";
+"%d snippet" = "фрагментов: %d";
+"%d snippets" = "фрагментов: %d";
+"%d folder" = "папок: %d";
+"%d folders" = "папок: %d";
+"%1$@, %2$@ synced" = "Синхронизировано — %1$@, %2$@";
+"No snippets synced yet" = "Фрагменты ещё не синхронизированы";
+
+/* About pane */
+"About" = "О программе";
+"Version %@" = "Версия %@";
+"Version %@ (%@)" = "Версия %@ (%@)";
+"This application is open source and can be found on GitHub:" = "Это приложение с открытым исходным кодом, оно доступно на GitHub:";
+"Released under the MIT License." = "Распространяется по лицензии MIT.";
+"Contributors" = "Участники";
+"Creator" = "Автор";
+/* Language selection (General preferences) */
+"Language" = "Язык";
+"Restart ClipMenu to apply the language change." = "Перезапустите ClipMenu, чтобы применить новый язык.";
+
+/* Snippet editor — new keys (issue #31) */
+"Folders" = "Папки";
+"Sort folders by" = "Сортировка папок";
+"Sort snippets in \"%@\"" = "Сортировка фрагментов в папке «%@»";
+"Manual (drag)" = "Вручную (перетаскивание)";
+"Name (A → Z)" = "Название (А → Я)";
+"Name (Z → A)" = "Название (Я → А)";
+"New Folder" = "Новая папка";
+"New Snippet" = "Новый фрагмент";
+"Delete" = "Удалить";
+"Label" = "Название";
+"Content" = "Содержимое";
+"No Snippet Selected" = "Фрагмент не выбран";
+"Restart Now" = "Перезапустить";
+"Rename" = "Переименовать";
+
+/* Auto-paste info popover (App Store build) */
+"About automatic paste" = "Об автоматической вставке";
+"When you pick a clip, this version copies it to the clipboard. Mac App Store apps run in a sandbox and aren't allowed to paste into other apps for you, so you press ⌘V yourself." = "При выборе элемента эта версия копирует его в буфер обмена. Приложения из Mac App Store работают в изолированной среде и не могут вставлять текст в другие приложения за вас, поэтому нажмите ⌘V самостоятельно.";
+"To paste automatically after selecting a clip, download ClipMenu 2 from GitHub or install it with Homebrew." = "Чтобы элемент вставлялся автоматически после выбора, загрузите ClipMenu 2 с GitHub или установите через Homebrew.";
+"Download ClipMenu 2" = "Загрузить ClipMenu 2";
+
+"Clipboard History Export" = "Экспорт истории буфера обмена";
+"Back up now" = "Создать резервную копию";
+"Restoring…" = "Восстановление…";
+"Restore" = "Восстановить";
+"Backup saved." = "Резервная копия сохранена.";
+"No changes since the last backup." = "Изменений с момента последнего резервного копирования нет.";
+"No backups yet." = "Резервных копий пока нет.";
+"items in this folder aren't ClipMenu 2 backups (for example, exports from an older app)." = "шт. в этой папке — не резервные копии ClipMenu 2 (например, экспорт из более старого приложения).";
+"Restore this backup?" = "Восстановить эту резервную копию?";
+"This replaces all your current snippets and folders. Your current snippets are backed up first." = "Все текущие фрагменты и папки будут заменены. Перед этим для текущих фрагментов будет создана резервная копия.";
+"folders" = "папок";
+"snippets" = "фрагментов";
+"Automatic" = "Автоматическая";
+"Manual" = "Ручная";
+"Before restore" = "Перед восстановлением";
+"Couldn't save a safety backup, so the restore was cancelled." = "Не удалось сохранить страховочную резервную копию, поэтому восстановление отменено.";
+"Couldn't save your snippets. Your last change isn't saved yet." = "Не удалось сохранить фрагменты. Последнее изменение ещё не сохранено.";
+"This version was made on a newer app version and can't be restored." = "Эта копия создана более новой версией приложения, и её нельзя восстановить.";
+"Restore failed. Your current data was not changed." = "Не удалось восстановить. Текущие данные не изменены.";
+
+/* First-run setup wizard */
+"Your clipboard history and snippets, one keystroke away." = "История буфера обмена и фрагменты — на расстоянии одного нажатия.";
+"History at your fingertips" = "История всегда под рукой";
+"Everything you copy, ready to paste from the menu bar." = "Всё, что вы копируете, можно вставить из строки меню.";
+"Snippets for what you reuse" = "Фрагменты для повторяющегося текста";
+"Save boilerplate text and paste it instantly." = "Сохраняйте шаблонный текст и вставляйте его мгновенно.";
+"Open it with a shortcut" = "Открывайте сочетанием клавиш";
+"Pop up your history anywhere, pick an item, done." = "Вызовите историю где угодно, выберите элемент — готово.";
+"No permissions needed" = "Разрешения не требуются";
+"ClipMenu 2 works the moment you continue." = "ClipMenu 2 начнёт работать, как только вы продолжите.";
+"Your clipboard stays on this Mac" = "Буфер обмена остаётся на этом Mac";
+"History is stored locally. Nothing is uploaded or sent anywhere." = "История хранится локально. Ничего не загружается и никуда не отправляется.";
+"Accessibility (optional)" = "Универсальный доступ (необязательно)";
+"Lets ClipMenu 2 paste the item you pick straight into the app you're using." = "Позволяет ClipMenu 2 вставлять выбранный элемент прямо в приложение, с которым вы работаете.";
+"Accessibility" = "Универсальный доступ";
+"Granted" = "Предоставлено";
+"Not granted" = "Не предоставлено";
+"Grant access" = "Предоставить доступ";
+"Open System Settings…" = "Открыть Системные настройки…";
+"You can skip this and turn it on later in Settings." = "Этот шаг можно пропустить и включить доступ позже в настройках.";
+"History essentials" = "Основные параметры истории";
+"Tune what ClipMenu 2 remembers. Change any of it later in Settings." = "Настройте, что запоминает ClipMenu 2. Всё это можно изменить позже в настройках.";
+"Items to keep" = "Число хранимых элементов";
+"Oldest are dropped past this count." = "При превышении этого числа самые старые удаляются.";
+"Keep history after quitting" = "Сохранять историю после завершения";
+"Store copied images" = "Сохранять скопированные изображения";
+"Kept as small thumbnails." = "Хранятся в виде небольших миниатюр.";
+"Make it yours" = "Настройте под себя";
+"Turn on what you want now. Everything is in Settings later." = "Включите нужное сейчас. Позже всё это можно найти в настройках.";
+"Launch at login" = "Запускать при входе в систему";
+"Paste automatically after picking" = "Вставлять автоматически после выбора";
+"ClipMenu 2 presses ⌘V for you." = "ClipMenu 2 нажимает ⌘V за вас.";
+"Global shortcuts" = "Глобальные сочетания клавиш";
+"History menu" = "Меню истории";
+"Main menu" = "Главное меню";
+"Snippets menu" = "Меню фрагментов";
+"You're all set" = "Всё готово";
+"ClipMenu 2 is live in your menu bar." = "ClipMenu 2 уже работает в строке меню.";
+"Open your clipboard history anytime." = "Открывайте историю буфера обмена в любой момент.";
+"You can also click the ClipMenu 2 icon in the menu bar." = "Также можно щёлкнуть значок ClipMenu 2 в строке меню.";
+"Continue" = "Продолжить";
+"Skip this step" = "Пропустить этот шаг";
+"Open ClipMenu 2" = "Открыть ClipMenu 2";
+"Back" = "Назад";
+"Show Setup Guide…" = "Показать мастер настройки…";
+
+/* History menu search (⌘⌃V) */
+"Search…" = "Поиск…";
+"No matches" = "Ничего не найдено";
+
+/* Uninstall pane. These four are live L() keys that en.lproj omits (English
+   falls back to the key itself); every other locale carries them here too. */
+"The app and its login item" = "Приложение и его объект входа";
+"All preferences and actions" = "Все настройки и действия";
+"Caches and support files" = "Кэши и вспомогательные файлы";
+"Also delete clipboard history and snippets" = "Также удалить историю буфера обмена и фрагменты";
+
+/* What's New (2.20.2) */
+"A maintenance release: internal updates only, with no changes to how ClipMenu works." = "Техническое обновление: только внутренние изменения, работа ClipMenu не меняется.";
+"Updated the shared Dragon toolkit that ClipMenu is built with." = "Обновлён общий набор инструментов Dragon, используемый в ClipMenu.";
+
+/* What's New (2.20.3) */
+"A small fix for anyone who installed ClipMenu with Homebrew." = "Небольшое исправление для тех, кто установил ClipMenu через Homebrew.";
+"Uninstalling from Settings now clears Homebrew's record of ClipMenu too, so installing it again with Homebrew works instead of being refused as already installed." = "При удалении из настроек теперь также стирается запись Homebrew о ClipMenu, поэтому повторная установка через Homebrew работает, а не отклоняется как уже выполненная.";
+
+/* What's New (2.20.4) */
+"ClipMenu now checks for updates from its own repository rather than the website." = "ClipMenu теперь проверяет наличие обновлений в собственном репозитории, а не на веб-сайте.";
+
+/* What's New (2.20.6) */
+"A fix for the About pane: it now links the original ClipMenu project, and shows a single copyright holder." = "Исправление в разделе «О программе»: теперь там есть ссылка на исходный проект ClipMenu и указан один правообладатель.";
+"The About pane now links the original ClipMenu project that ClipMenu 2 is based on." = "В разделе «О программе» теперь есть ссылка на исходный проект ClipMenu — основу ClipMenu 2.";
+"The About pane's copyright line now names one holder instead of two." = "В строке об авторских правах в разделе «О программе» теперь указан один правообладатель вместо двух.";
+
+/* What's New (2.20.7) */
+"A fix for the copyright notice: the one macOS shows in Finder's Get Info panel described the app instead of naming a copyright holder." = "Исправление уведомления об авторских правах: в окне «Свойства» Finder вместо правообладателя показывалось описание приложения.";
+"Finder's Get Info panel now shows ClipMenu's copyright holders instead of a one-line description of the app." = "В окне «Свойства» Finder теперь указаны правообладатели ClipMenu, а не однострочное описание приложения.";
+
+/* What's New (2.20.8) */
+"Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "В окне «Свойства» Finder теперь отображаются авторские права ClipMenu — та же строка, что и в разделе «О программе».";
+
+/* What's New (2.21.1) */
+"app.whatsNew.summary" = "Теперь во всём интерфейсе приложение называется одинаково — ClipMenu 2. История буфера обмена, фрагменты и настройки не изменились.";
+"app.whatsNew.changed1" = "Приложение везде называется «ClipMenu 2». В двенадцати местах интерфейса — среди них «Завершить», «Открыть», экраны первоначальной настройки, запрос о запуске при входе в систему и подсказка о разрешении на вставку — по-прежнему значилось «ClipMenu», тогда как в строке меню и в разделе «О программе» было «ClipMenu 2». Приложение расходилось само с собой в собственном названии. Теперь все эти места совпадают. Упоминания оригинального ClipMenu Наотаки Моримото, переработкой которого является это приложение, намеренно сохраняют исходное название.";
