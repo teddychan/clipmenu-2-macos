@@ -194,11 +194,11 @@
 "Backup saved." = "백업이 저장되었습니다.";
 "No changes since the last backup." = "마지막 백업 이후 변경 사항이 없습니다.";
 "No backups yet." = "아직 백업이 없습니다.";
-"items in this folder aren't ClipMenu 2 backups (for example, exports from an older app)." = "개의 항목은 ClipMenu 2 백업이 아닙니다 (예: 이전 버전 앱에서 내보낸 파일).";
+"Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "이 폴더의 항목 %d개는 ClipMenu 2 백업이 아닙니다 (예: 이전 버전 앱에서 내보낸 파일).";
 "Restore this backup?" = "이 백업을 복원하시겠습니까?";
 "This replaces all your current snippets and folders. Your current snippets are backed up first." = "현재의 모든 스니펫과 폴더를 대체합니다. 현재 스니펫은 먼저 백업됩니다.";
-"folders" = "폴더";
-"snippets" = "스니펫";
+"Folders: %d" = "폴더 %d개";
+"Snippets: %d" = "스니펫 %d개";
 "Automatic" = "자동";
 "Manual" = "수동";
 "Before restore" = "복원 전";
@@ -206,6 +206,24 @@
 "Couldn't save your snippets. Your last change isn't saved yet." = "스니펫을 저장하지 못했습니다. 마지막 변경 사항이 아직 저장되지 않았습니다.";
 "This version was made on a newer app version and can't be restored." = "이 버전은 최신 버전의 앱에서 만들어져 복원할 수 없습니다.";
 "Restore failed. Your current data was not changed." = "복원에 실패했습니다. 현재 데이터는 변경되지 않았습니다.";
+"Sync & Backup" = "동기화 및 백업";
+"Backup folder" = "백업 폴더";
+"Choose…" = "선택…";
+"Change…" = "변경…";
+"Choose" = "선택";
+"Snippets and settings are backed up to this folder (the newest 20 are kept). Put it in Dropbox, iCloud Drive, or Google Drive to sync across your Macs or set up a new Mac." = "스니펫과 설정이 이 폴더에 백업됩니다(최신 20개 보관). Dropbox, iCloud Drive 또는 Google Drive에 두면 여러 Mac 간에 동기화하거나 새 Mac을 설정할 수 있습니다.";
+"Back up automatically when quitting" = "종료 시 자동으로 백업";
+"Restore…" = "복원…";
+"Backup failed. Try again later." = "백업에 실패했습니다. 나중에 다시 시도하세요.";
+"Choose a backup folder first." = "먼저 백업 폴더를 선택하세요.";
+"Restore from Backup" = "백업에서 복원";
+"Couldn't load backups from the folder." = "폴더에서 백업을 불러오지 못했습니다.";
+"Back up snippets and settings to a folder you choose in Settings — put it in Dropbox or iCloud Drive to sync across Macs." = "설정에서 선택한 폴더에 스니펫과 설정을 백업하세요. Dropbox나 iCloud Drive에 두면 여러 Mac 간에 동기화됩니다.";
+"Maximum thumbnail size:" = "최대 썸네일 크기:";
+"px" = "px";
+"Snippet" = "스니펫";
+"Already used by %@" = "%@에서 이미 사용 중";
+"Shortcut unavailable" = "사용할 수 없는 단축키";
 
 /* First-run setup wizard */
 "Your clipboard history and snippets, one keystroke away." = "클립보드 기록과 스니펫을 단축키 하나로.";

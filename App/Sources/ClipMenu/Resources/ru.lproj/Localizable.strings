@@ -3,9 +3,7 @@
    Строка меню, Системные настройки, Универсальный доступ, Правка.
    Russian has three plural forms, so counts are phrased "Label: %d"; a key
    that follows a number the code prints itself uses a count-neutral form
-   ("шт.", "симв.") where one exists. "folders" / "snippets" have none: the
-   backup row prints "<n> папок", which is wrong after 1–4 until that call
-   site formats "Папок: %d" itself. */
+   ("шт.", "симв."). */
 
 /* General preferences */
 "Launch on Login" = "Запускать при входе в систему";
@@ -200,11 +198,11 @@
 "Backup saved." = "Резервная копия сохранена.";
 "No changes since the last backup." = "Изменений с момента последнего резервного копирования нет.";
 "No backups yet." = "Резервных копий пока нет.";
-"items in this folder aren't ClipMenu 2 backups (for example, exports from an older app)." = "шт. в этой папке — не резервные копии ClipMenu 2 (например, экспорт из более старого приложения).";
+"Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "Элементов в этой папке, которые не являются резервными копиями ClipMenu 2: %d (например, экспорт из более старого приложения).";
 "Restore this backup?" = "Восстановить эту резервную копию?";
 "This replaces all your current snippets and folders. Your current snippets are backed up first." = "Все текущие фрагменты и папки будут заменены. Перед этим для текущих фрагментов будет создана резервная копия.";
-"folders" = "папок";
-"snippets" = "фрагментов";
+"Folders: %d" = "Папок: %d";
+"Snippets: %d" = "Фрагментов: %d";
 "Automatic" = "Автоматическая";
 "Manual" = "Ручная";
 "Before restore" = "Перед восстановлением";
@@ -212,6 +210,24 @@
 "Couldn't save your snippets. Your last change isn't saved yet." = "Не удалось сохранить фрагменты. Последнее изменение ещё не сохранено.";
 "This version was made on a newer app version and can't be restored." = "Эта копия создана более новой версией приложения, и её нельзя восстановить.";
 "Restore failed. Your current data was not changed." = "Не удалось восстановить. Текущие данные не изменены.";
+"Sync & Backup" = "Синхронизация и резервное копирование";
+"Backup folder" = "Папка резервных копий";
+"Choose…" = "Выбрать…";
+"Change…" = "Изменить…";
+"Choose" = "Выбрать";
+"Snippets and settings are backed up to this folder (the newest 20 are kept). Put it in Dropbox, iCloud Drive, or Google Drive to sync across your Macs or set up a new Mac." = "Фрагменты и настройки сохраняются в эту папку (хранятся 20 последних копий). Поместите её в Dropbox, iCloud Drive или Google Drive, чтобы синхронизировать их между компьютерами Mac или настроить новый Mac.";
+"Back up automatically when quitting" = "Создавать резервную копию при выходе";
+"Restore…" = "Восстановить…";
+"Backup failed. Try again later." = "Не удалось создать резервную копию. Повторите попытку позже.";
+"Choose a backup folder first." = "Сначала выберите папку для резервных копий.";
+"Restore from Backup" = "Восстановление из резервной копии";
+"Couldn't load backups from the folder." = "Не удалось загрузить резервные копии из папки.";
+"Back up snippets and settings to a folder you choose in Settings — put it in Dropbox or iCloud Drive to sync across Macs." = "Сохраняйте фрагменты и настройки в папку, выбранную в настройках, — поместите её в Dropbox или iCloud Drive для синхронизации между компьютерами Mac.";
+"Maximum thumbnail size:" = "Макс. размер миниатюры:";
+"px" = "пикс.";
+"Snippet" = "Фрагмент";
+"Already used by %@" = "Уже используется: %@";
+"Shortcut unavailable" = "Сочетание клавиш недоступно";
 
 /* First-run setup wizard */
 "Your clipboard history and snippets, one keystroke away." = "История буфера обмена и фрагменты — на расстоянии одного нажатия.";

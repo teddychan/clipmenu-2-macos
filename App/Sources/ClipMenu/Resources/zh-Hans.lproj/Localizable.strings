@@ -194,11 +194,11 @@
 "Backup saved." = "备份已保存。";
 "No changes since the last backup." = "自上次备份以来没有更改。";
 "No backups yet." = "暂无备份。";
-"items in this folder aren't ClipMenu 2 backups (for example, exports from an older app)." = "个项目不是 ClipMenu 2 备份（例如，来自旧版应用的导出文件）。";
+"Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "此文件夹中有 %d 个项目不是 ClipMenu 2 备份（例如，来自旧版应用的导出文件）。";
 "Restore this backup?" = "要恢复此备份吗？";
 "This replaces all your current snippets and folders. Your current snippets are backed up first." = "这将替换您当前所有的片段和文件夹。您当前的片段会先备份。";
-"folders" = "个文件夹";
-"snippets" = "个片段";
+"Folders: %d" = "%d 个文件夹";
+"Snippets: %d" = "%d 个片段";
 "Automatic" = "自动";
 "Manual" = "手动";
 "Before restore" = "恢复前";
@@ -206,6 +206,24 @@
 "Couldn't save your snippets. Your last change isn't saved yet." = "无法保存片段，你的最后一次更改尚未保存。";
 "This version was made on a newer app version and can't be restored." = "该版本由更新版本的应用创建，无法恢复。";
 "Restore failed. Your current data was not changed." = "恢复失败。你的当前数据未被更改。";
+"Sync & Backup" = "同步与备份";
+"Backup folder" = "备份文件夹";
+"Choose…" = "选择…";
+"Change…" = "更改…";
+"Choose" = "选择";
+"Snippets and settings are backed up to this folder (the newest 20 are kept). Put it in Dropbox, iCloud Drive, or Google Drive to sync across your Macs or set up a new Mac." = "片段和设置会备份到此文件夹（保留最新的 20 份）。将它放在 Dropbox、iCloud Drive 或 Google Drive 中，即可在多台 Mac 之间同步或设置新 Mac。";
+"Back up automatically when quitting" = "退出时自动备份";
+"Restore…" = "恢复…";
+"Backup failed. Try again later." = "备份失败，请稍后再试。";
+"Choose a backup folder first." = "请先选择备份文件夹。";
+"Restore from Backup" = "从备份恢复";
+"Couldn't load backups from the folder." = "无法从文件夹载入备份。";
+"Back up snippets and settings to a folder you choose in Settings — put it in Dropbox or iCloud Drive to sync across Macs." = "将片段和设置备份到你在设置中选择的文件夹——放在 Dropbox 或 iCloud Drive 中即可在多台 Mac 之间同步。";
+"Maximum thumbnail size:" = "最大缩略图尺寸：";
+"px" = "像素";
+"Snippet" = "片段";
+"Already used by %@" = "已被 %@ 使用";
+"Shortcut unavailable" = "快捷键不可用";
 
 /* First-run setup wizard */
 "Your clipboard history and snippets, one keystroke away." = "你的剪贴板历史和片段，一个按键即可调出。";
