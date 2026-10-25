@@ -116,7 +116,7 @@ jobs:
       #
       # No GitHub Pages setup required: the app-owned URL is served by raw.githubusercontent.com,
       # exactly as spectacle-2's has been since it migrated.
-      appcast_repo: teddychan/clipmenu-2
+      appcast_repo: teddychan/clipmenu-2-macos
       build_kind: swiftpm
       app_slug: clipmenu-2
       release_title_prefix: ''            # title == tag
