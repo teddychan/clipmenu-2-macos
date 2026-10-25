@@ -23,7 +23,7 @@ JavaScript text actions, and folder-based backup of your settings come with it.
 
 ![Actions and snippets](docs/images/actions-snippets.png)
 
-[![Download](https://img.shields.io/badge/download-latest-brightgreen?style=flat-square)](https://github.com/teddychan/clipmenu-2/releases/latest)
+[![Download](https://img.shields.io/badge/download-latest-brightgreen?style=flat-square)](https://github.com/teddychan/clipmenu-2-macos/releases/latest)
 ![Platform](https://img.shields.io/badge/platform-macOS-blue?style=flat-square)
 ![Requirements](https://img.shields.io/badge/requirements-macOS%2026%2B-fa4e49?style=flat-square)
 [![Website](https://img.shields.io/badge/Website-dragonapp.com-015FBA?style=flat-square)](https://www.dragonapp.com/clipmenu-2/)
@@ -69,7 +69,7 @@ the sandbox forbids pasting into other apps, it copies the clip you pick and you
 ### Manual
 
 Download `ClipMenu-2-vX.Y.Z.zip` from the
-[latest release](https://github.com/teddychan/clipmenu-2/releases/latest), unzip it,
+[latest release](https://github.com/teddychan/clipmenu-2-macos/releases/latest), unzip it,
 and move `ClipMenu 2.app` into `/Applications`. These builds are Developer
 ID-signed and notarized, and update themselves via Sparkle.
 
@@ -226,7 +226,7 @@ building and search, hotkey rebinding, the Settings panes, and folder backup and
 restore. CI runs the whole suite on every pull request via
 [`.github/workflows/tests.yml`](.github/workflows/tests.yml), using the same script.
 
-[![Tests](https://github.com/teddychan/clipmenu-2/actions/workflows/tests.yml/badge.svg)](https://github.com/teddychan/clipmenu-2/actions/workflows/tests.yml)
+[![Tests](https://github.com/teddychan/clipmenu-2-macos/actions/workflows/tests.yml/badge.svg)](https://github.com/teddychan/clipmenu-2-macos/actions/workflows/tests.yml)
 
 ```bash
 App/scripts/test.sh
@@ -245,7 +245,7 @@ state such as `NSPasteboard.general`.
 ## Contributing
 
 Bug reports and feature requests are welcome on the
-[issues page](https://github.com/teddychan/clipmenu-2/issues). For pull requests, keep
+[issues page](https://github.com/teddychan/clipmenu-2-macos/issues). For pull requests, keep
 changes focused, run `App/scripts/test.sh` before you push, and record notable
 changes in [CHANGELOG.md](CHANGELOG.md) (developer-facing notes; the user-facing
 release notes live in `App/Sources/ClipMenu/WhatsNewConfig.swift`).
