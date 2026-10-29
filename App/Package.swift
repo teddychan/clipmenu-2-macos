@@ -23,7 +23,7 @@ import Foundation
 let sparkleEnabled = ProcessInfo.processInfo.environment["CLIPMENU_SPARKLE"] == "1"
 
 var packageDependencies: [Package.Dependency] = [
-    .package(url: "https://github.com/teddychan/dragon-kit", from: "4.1.2"),
+    .package(url: "https://github.com/teddychan/dragon-kit", from: "4.2.0"),
     // Test-only: SwiftUI view-tree inspection so the app's SwiftUI panes/views can
     // be asserted in unit tests. Linked ONLY by the ClipMenuTests target — never by
     // the app product — so it ships in no build.
@@ -86,7 +86,8 @@ let package = Package(
                 .process("Resources/ja.lproj"),
                 .process("Resources/ko.lproj"),
                 .process("Resources/es.lproj"),
-                .process("Resources/fr.lproj")
+                .process("Resources/fr.lproj"),
+                .process("Resources/ru.lproj")
             ],
             swiftSettings: clipMenuSwiftSettings,
             linkerSettings: clipMenuLinkerSettings

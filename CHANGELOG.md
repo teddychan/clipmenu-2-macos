@@ -5,6 +5,29 @@ Developer-facing notes for ClipMenu. User-facing release notes live in
 
 ## Unreleased
 
+### Added
+- **Russian.** `ru.lproj` translates every key in `en.lproj`, in the same order and with the
+  same printf specifiers, plus the four live Uninstall-pane keys that `en.lproj` omits (English
+  falls back to the key itself; every other locale carries them). The terminology follows the
+  translation @shendrykau contributed to Ice 2 and DragonKit in teddychan/ice-2#132 — Строка меню,
+  Системные настройки, Универсальный доступ, Правка — so the kit's panes and the app's own
+  strings use the same words.
+
+  Russian has three plural forms and these tables are not `.stringsdict`, so counts read
+  "Label: %d". Where the code prints the number itself and appends a key, the translation uses a
+  count-neutral form ("шт.", "симв.") — except the backup row's "folders" / "snippets", which
+  have none and read "<n> папок", wrong after 1–4, until that call site formats the label itself.
+
+  **Every release's What's New text now needs a Russian line too.** dragon-release-ci's exporter
+  discovers each `*.lproj` beside `WhatsNewConfig.swift` and fails the release on a key missing
+  from any of them, so the current `app.whatsNew.summary` / `changed1` are translated here.
+
+### Changed
+- **DragonKit 4.1.2 → 4.2.0**, which adds `DragonLanguage.ru`. CONFORMANCE §R13 reads the kit's
+  language list from dragon-kit main, so from 4.2.0's tag every PR here failed §R13 — a bare
+  `LanguagePicker()` offers all eight kit languages, and the app shipped seven — until Russian
+  landed. Both moved in this one change, which is why the pin bump is not a separate PR.
+
 ## 2.21.2 — 2026-08-20
 
 The app agrees with itself about its own name.
