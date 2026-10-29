@@ -28,9 +28,6 @@ APP_NAME="ClipMenu ${MAJOR} Debug"
 DEBUG_ID="com.dragonapp.clipmenu-2.debug"
 APP=".build/${APP_NAME}.app"
 
-# Quit ONLY this debug instance (never the installed release).
-pkill -f "${APP_NAME}.app/Contents/MacOS" 2>/dev/null || true
-sleep 1
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp "$BIN_PATH/ClipMenu" "$APP/Contents/MacOS/ClipMenu"
@@ -117,9 +114,29 @@ fi
 codesign --force --deep --sign "$IDENTITY" "$APP" 2>/dev/null || true
 
 echo "Assembled $APP (id ${DEBUG_ID})"
+
+# Install into /Applications, where the release copy lives too, replacing the
+# previous Debug copy outright. The rm -rf below runs in /Applications, so refuse
+# unless the identity is the Debug one.
+INSTALLED="/Applications/${APP_NAME}.app"
+[[ "$APP_NAME" == *" Debug" && "$DEBUG_ID" == *.debug ]] \
+  || { echo "error: refusing to install a non-Debug identity into /Applications" >&2; exit 1; }
+
+# Quit ONLY the running debug instance, found by its .debug bundle id (never the
+# installed release, whose id differs). This also catches a Debug copy launched
+# from an older build folder.
+for ASN in $(lsappinfo find bundleid="$DEBUG_ID" | grep -oE 'ASN:0x[0-9a-f]+-0x[0-9a-f]+-' || true); do
+    PID="$(lsappinfo info -only pid "$ASN" | grep -oE 'pid"? ?= ?[0-9]+' | grep -oE '[0-9]+$' || true)"
+    [ -n "$PID" ] && kill "$PID" 2>/dev/null || true
+done
+sleep 1
+
+rm -rf "$INSTALLED"
+ditto "$APP" "$INSTALLED"
+echo "Installed $INSTALLED"
 # -n opens the bundle at THIS exact path. A plain `open` (or `open -b`) lets
 # LaunchServices resolve the debug id to whichever bundle it likes — including a
 # stale build in another checkout — so you'd debug a binary you didn't just
 # compile. It also parents the app to launchd, so it outlives this shell.
-open -n "$APP"
+open -n "$INSTALLED"
 echo "Launched ${APP_NAME} v${SHORT_VERSION} Debug (build ${BUILD}) — runs next to the installed ClipMenu 2."
