@@ -26,3 +26,17 @@ ClipMenu 2: a macOS clipboard-history menu-bar app, built as a SwiftPM package u
 
 - Write tests with Swift Testing (`@Test`/`@Suite`), not XCTest. ViewInspector is linked only by the `ClipMenuTests` target, never by the app product.
 - Don't chase unit coverage of window hosting, `@main`/app-delegate lifecycle or Carbon hot-key registration; they can't run headlessly. Extract the logic into a pure helper and test that (as `ManualReorder` does for snippet drag-reorder).
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in GitHub Issues for teddychan/clipmenu-2 (via the `gh` CLI). See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default vocabulary: needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: one `GLOSSARY.md` and `docs/adr/` at the repo root, created lazily. See `docs/agents/domain.md`.

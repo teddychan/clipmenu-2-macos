@@ -52,8 +52,10 @@ struct GeneralPreferencesView: View {
     var body: some View {
         DragonForm {
             DragonSection {
-                // DragonKit's shared 7-language switcher — switches live, no restart.
-                LanguagePicker()
+                // DragonKit's shared language switcher — switches live, no restart.
+                // Lists only the languages this app ships an .lproj for (DragonKit
+                // CONFORMANCE §R13); the kit also has ru, which ClipMenu doesn't translate.
+                LanguagePicker(languages: [.en, .es, .fr, .ja, .ko, .zhHans, .zhHant])
             }
             DragonSection {
                 Toggle(L("Launch on Login"), isOn: $loginItem)
