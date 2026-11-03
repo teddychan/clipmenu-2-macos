@@ -405,7 +405,10 @@ final class MainMenuController: NSObject, NSMenuDelegate {
             let submenu = NSMenu(title: L("Snippets"))
             submenu.autoenablesItems = false
             snippetsItem.submenu = submenu
-            if showsMenuIcons { snippetsItem.image = iconCache.folderIcon }
+            if showsMenuIcons {
+                snippetsItem.image = iconCache.folderIcon
+                snippetsItem.keepImageVisible()
+            }
             menu.addItem(snippetsItem)
             addFolderItems(folders, to: submenu)
         } else {
@@ -432,7 +435,10 @@ final class MainMenuController: NSObject, NSMenuDelegate {
             let submenu = NSMenu(title: folder.title)
             submenu.autoenablesItems = false
             folderItem.submenu = submenu
-            if showsMenuIcons { folderItem.image = iconCache.folderIcon }
+            if showsMenuIcons {
+                folderItem.image = iconCache.folderIcon
+                folderItem.keepImageVisible()
+            }
             target.addItem(folderItem)
 
             var number = 1
@@ -445,7 +451,10 @@ final class MainMenuController: NSObject, NSMenuDelegate {
                 item.target = self
                 item.representedObject = snippet
                 item.toolTip = snippet.content // full content, unconditional (MenuController.m:888)
-                if showsMenuIcons { item.image = iconCache.snippetIcon }
+                if showsMenuIcons {
+                    item.image = iconCache.snippetIcon
+                    item.keepImageVisible()
+                }
                 submenu.addItem(item)
                 number += 1
             }
@@ -665,7 +674,10 @@ final class MainMenuController: NSObject, NSMenuDelegate {
         let submenu = NSMenu(title: "ClipFolder")
         submenu.autoenablesItems = false
         folderItem.submenu = submenu
-        if showsMenuIcons { folderItem.image = iconCache.folderIcon }
+        if showsMenuIcons {
+            folderItem.image = iconCache.folderIcon
+            folderItem.keepImageVisible()
+        }
         return folderItem
     }
 
@@ -943,7 +955,10 @@ final class MainMenuController: NSObject, NSMenuDelegate {
             guard sub.numberOfItems > 0 else { return nil }   // 1175-1178
             let folderItem = NSMenuItem(title: node.title, action: nil, keyEquivalent: "")
             folderItem.submenu = sub
-            if showIcon { folderItem.image = iconCache.folderIcon }
+            if showIcon {
+                folderItem.image = iconCache.folderIcon
+                folderItem.keepImageVisible()
+            }
             return folderItem
         }
 
@@ -956,6 +971,7 @@ final class MainMenuController: NSObject, NSMenuDelegate {
         }
         if showIcon {
             item.image = (spec.type == ActionStore.jsType) ? iconCache.javaScriptIcon : iconCache.actionIcon
+            item.keepImageVisible()
         }
         return item
     }

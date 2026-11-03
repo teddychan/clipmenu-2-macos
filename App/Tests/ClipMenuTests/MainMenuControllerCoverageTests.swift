@@ -517,4 +517,44 @@ struct MainMenuControllerCoverageTests {
             #expect((menu.items[0].representedObject as? ActionInvocation)?.snippet === snippet)
         }
     }
+
+    // MARK: - Menu icons on macOS 27
+
+    /// macOS 27 hides an NSMenuItem's image unless the item opts in, read by name
+    /// because the release SDK (macOS 26) doesn't declare the property.
+    private func imagedItemsHiddenOnMacOS27(_ menu: NSMenu) -> [String] {
+        let imaged = allItems(menu).filter { $0.image != nil }
+        #expect(!imaged.isEmpty, "menu \(menu.title) has no imaged items to check")
+        guard #available(macOS 27, *) else { return [] }
+        return imaged
+            .filter { $0.value(forKey: "preferredImageVisibility") as? Int != 1 }
+            .map(\.title)
+    }
+
+    @Test func everyImagedItemKeepsItsIconOnMacOS27() throws {
+        let restore = snapshotDefaults([
+            PreferenceKeys.groupSnippetsInFolder,
+            PreferenceKeys.numberOfItemsPlaceInline, PreferenceKeys.numberOfItemsPlaceInsideFolder,
+        ])
+        defer { restore() }
+        UserDefaults.standard.set(true, forKey: PreferenceKeys.groupSnippetsInFolder)
+        UserDefaults.standard.set(0, forKey: PreferenceKeys.numberOfItemsPlaceInline)
+        UserDefaults.standard.set(2, forKey: PreferenceKeys.numberOfItemsPlaceInsideFolder)
+
+        let (_, _, cleanupFolder) = seedFolder(
+            title: "ZqIcons\(UInt32.random(in: 0 ... .max))", snippets: [("Alpha", "alpha body")])
+        defer { cleanupFolder() }
+        let m = marker()
+        let (_, cleanupClips) = seedClips(["\(m)A", "\(m)B", "\(m)C"])
+        defer { cleanupClips() }
+
+        try withDefaultActions {
+            let c = MainMenuController()
+            let clip = ClipRecord(typeIdentifiers: ["String"], stringValue: "hi", contentHash: 1)
+            #expect(imagedItemsHiddenOnMacOS27(c.buildSnippetsMenu()) == [])
+            let history = try historyMenu(driving: m, on: c)
+            #expect(imagedItemsHiddenOnMacOS27(history) == [])
+            #expect(imagedItemsHiddenOnMacOS27(c.buildActionsMenu(forClip: clip, snippet: nil)) == [])
+        }
+    }
 }
