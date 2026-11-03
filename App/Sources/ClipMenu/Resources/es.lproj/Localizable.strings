@@ -311,7 +311,6 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "El panel Obtener información del Finder ahora muestra el copyright de ClipMenu, la misma línea que muestra el panel Acerca de.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "El ruso ya es uno de los idiomas de ClipMenu 2, y partes de los Ajustes que seguían en inglés ahora están traducidas.";
-"app.whatsNew.added1" = "Ruso. Elígelo en Idioma, dentro de los Ajustes, y la app cambia al instante sin reiniciar.";
-"app.whatsNew.fixed1" = "Casi todo el panel Sincronización y copias de seguridad, la columna Fragmento del editor de fragmentos, el ajuste Tamaño máximo de miniatura y los mensajes del grabador de atajos aparecían en inglés fuera cual fuera tu idioma. Ahora están traducidos.";
-"app.whatsNew.fixed2" = "Restaurar desde una copia muestra los recuentos como \"Carpetas: 3 · Fragmentos: 12\", así que se leen bien en todos los idiomas. El aviso sobre los archivos de la carpeta de copias que no son copias de ClipMenu 2 también muestra bien su número.";
+"app.whatsNew.summary" = "En macOS 27, los iconos de los menús de ClipMenu 2 vuelven a verse.";
+"app.whatsNew.fixed1" = "En macOS 27, los menús de ClipMenu 2 habían perdido sus iconos. Los fragmentos, las carpetas de fragmentos, las carpetas del Historial y las acciones no los mostraban, y tampoco Acerca de, Buscar actualizaciones, Ajustes y Salir. Todos vuelven a mostrar su icono. Las versiones anteriores de macOS se ven igual que antes.";
+"app.whatsNew.changed1" = "Actualizado a DragonKit 4.3.0, el framework compartido detrás de Ajustes, Acerca de, Novedades y las actualizaciones de software. Los iconos de Acerca de, Buscar actualizaciones, Ajustes y Salir vuelven gracias a él.";

@@ -3,6 +3,23 @@
 Developer-facing notes for ClipMenu. User-facing release notes live in
 `App/Sources/ClipMenu/WhatsNewConfig.swift` (shown in the in-app What's New pane).
 
+## 2.22.1 (2026-11-03)
+
+On macOS 27, the icons in ClipMenu 2's menus show again.
+
+### Fixed
+- **Menu icons on macOS 27.** macOS 27 hides a menu item's icon unless the item asks to keep it,
+  so ClipMenu 2's menus showed none. Snippet folders, snippets, the grouped Snippets item, History
+  folders, action folders and actions now call DragonKit's `keepImageVisible()` after setting their
+  icon. It does nothing on older macOS. About, Check for Updates, Settings and Quit get their icons
+  back from DragonKit 4.3.0 itself. A new test builds the Snippets, History and Actions menus and
+  checks that every item with an icon keeps it on macOS 27.
+
+### Changed
+- **DragonKit 4.2.0 → 4.3.0.** The kit fixes its own menu icons on macOS 27 and adds
+  `keepImageVisible()`. About now reads "Built with · DragonKit v4.3.0", and conformance rule
+  §R10 no longer fails the app for staying on 4.2.0.
+
 ## 2.22.0 (2026-11-03)
 
 Russian, and the strings that still showed English in every language.
