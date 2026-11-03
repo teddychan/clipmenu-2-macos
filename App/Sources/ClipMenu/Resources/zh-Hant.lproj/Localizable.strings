@@ -311,7 +311,6 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder 的「顯示簡介」現在會顯示 ClipMenu 的版權聲明，與關於面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "ClipMenu 2 現已支援俄文，先前仍顯示為英文的部分設定也已翻譯。";
-"app.whatsNew.added1" = "俄文。在設定的「語言」中選擇後，應用程式會立即切換，無需重新啟動。";
-"app.whatsNew.fixed1" = "「同步與備份」面板的大部分內容、片段編輯器中的「片段」欄、「最大縮圖尺寸」設定，以及快速鍵錄製時的提示，無論選擇哪種語言都顯示為英文。現在都已翻譯。";
-"app.whatsNew.fixed2" = "「從備份還原」列表現在以「3 個資料夾 · 12 個片段」的形式顯示數量，在各種語言中都能正確閱讀。關於備份資料夾中非 ClipMenu 2 備份檔案的提示，也會正確顯示數量。";
+"app.whatsNew.summary" = "在 macOS 27 上，ClipMenu 2 選單中的圖示重新顯示了。";
+"app.whatsNew.fixed1" = "在 macOS 27 上，ClipMenu 2 的選單失去了圖示。片段、片段資料夾、「歷史」中的資料夾和動作都不顯示圖示，「關於 ClipMenu 2」「檢查更新」「設定」和「結束 ClipMenu 2」也一樣。現在這些圖示都重新顯示。較早版本的 macOS 上外觀不變。";
+"app.whatsNew.changed1" = "更新至 DragonKit 4.3.0，這是支撐設定、關於、新功能與軟體更新的共享框架。「關於 ClipMenu 2」「檢查更新」「設定」和「結束 ClipMenu 2」的圖示正是因它而恢復。";

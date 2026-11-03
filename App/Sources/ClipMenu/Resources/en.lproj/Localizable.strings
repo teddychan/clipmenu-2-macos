@@ -300,7 +300,6 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Russian is now one of ClipMenu 2's languages, and parts of Settings that stayed in English are translated.";
-"app.whatsNew.added1" = "Russian. Pick it under Language in Settings and the app switches right away without a restart.";
-"app.whatsNew.fixed1" = "Most of the Sync & Backup pane, the Snippet column in the snippet editor, the maximum thumbnail size setting and the shortcut recorder's messages showed in English whatever language you picked. They are now translated.";
-"app.whatsNew.fixed2" = "Restore from Backup lists counts as \"Folders: 3 · Snippets: 12\", so they read correctly in every language. A backup folder holding one file that isn't a ClipMenu 2 backup no longer says \"1 items\".";
+"app.whatsNew.summary" = "On macOS 27, the icons in ClipMenu 2's menus show again.";
+"app.whatsNew.fixed1" = "On macOS 27, ClipMenu 2's menus had lost their icons. Snippets, snippet folders, History folders and actions showed none, and neither did About, Check for Updates, Settings and Quit. All of them show their icons again. Earlier versions of macOS look the same as before.";
+"app.whatsNew.changed1" = "Updated to DragonKit 4.3.0, the shared framework behind Settings, About, What's New and software updates. The icons on About, Check for Updates, Settings and Quit come back through it.";
