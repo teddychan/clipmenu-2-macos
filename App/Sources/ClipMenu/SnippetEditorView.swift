@@ -473,7 +473,7 @@ struct SnippetEditorView: View {
 /// set (the row enters edit mode on a double-click). Commit on Return /
 /// focus-loss; the binding rejects empty names. Single clicks pass through to
 /// the enclosing `List` so they select the folder.
-private struct FolderNameField: View {
+struct FolderNameField: View {
     @Binding var text: String
     @Binding var isEditing: Bool
     @FocusState private var focused: Bool
