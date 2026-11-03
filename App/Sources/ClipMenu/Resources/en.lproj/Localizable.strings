@@ -300,5 +300,7 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "ClipMenu 2 now calls itself by the same name everywhere in its own interface. Your clipboard history, snippets and settings are unchanged.";
-"app.whatsNew.changed1" = "The app is called \"ClipMenu 2\" throughout. Twelve places in its own interface still said \"ClipMenu\" — Quit, Open, the onboarding screens, the launch-at-login prompt and the paste-permission hint among them — while the menu bar and About showed \"ClipMenu 2\". The app disagreed with itself about its own name. Every one of those now matches. References to the original ClipMenu by Naotaka Morimoto, which this app is a rebuild of, deliberately keep the original name.";
+"app.whatsNew.summary" = "Russian is now one of ClipMenu 2's languages, and parts of Settings that stayed in English are translated.";
+"app.whatsNew.added1" = "Russian. Pick it under Language in Settings and the app switches right away without a restart.";
+"app.whatsNew.fixed1" = "Most of the Sync & Backup pane, the Snippet column in the snippet editor, the maximum thumbnail size setting and the shortcut recorder's messages showed in English whatever language you picked. They are now translated.";
+"app.whatsNew.fixed2" = "Restore from Backup lists counts as \"Folders: 3 · Snippets: 12\", so they read correctly in every language. A backup folder holding one file that isn't a ClipMenu 2 backup no longer says \"1 items\".";

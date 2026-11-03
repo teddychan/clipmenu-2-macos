@@ -311,5 +311,7 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "El panel Obtener información del Finder ahora muestra el copyright de ClipMenu, la misma línea que muestra el panel Acerca de.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "ClipMenu 2 ahora usa el mismo nombre en toda su interfaz. Tu historial del portapapeles, tus fragmentos y tus ajustes no cambian.";
-"app.whatsNew.changed1" = "La app se llama \"ClipMenu 2\" en todas partes. Doce lugares de su propia interfaz seguían diciendo \"ClipMenu\" — entre ellos Salir, Abrir, las pantallas de bienvenida, el aviso de inicio al iniciar sesión y la indicación sobre el permiso de pegado — mientras la barra de menús y Acerca de mostraban \"ClipMenu 2\". La app no coincidía consigo misma en su propio nombre. Ahora todos coinciden. Las referencias al ClipMenu original de Naotaka Morimoto, del que esta app es una reconstrucción, conservan a propósito el nombre original.";
+"app.whatsNew.summary" = "El ruso ya es uno de los idiomas de ClipMenu 2, y partes de los Ajustes que seguían en inglés ahora están traducidas.";
+"app.whatsNew.added1" = "Ruso. Elígelo en Idioma, dentro de los Ajustes, y la app cambia al instante sin reiniciar.";
+"app.whatsNew.fixed1" = "Casi todo el panel Sincronización y copias de seguridad, la columna Fragmento del editor de fragmentos, el ajuste Tamaño máximo de miniatura y los mensajes del grabador de atajos aparecían en inglés fuera cual fuera tu idioma. Ahora están traducidos.";
+"app.whatsNew.fixed2" = "Restaurar desde una copia muestra los recuentos como \"Carpetas: 3 · Fragmentos: 12\", así que se leen bien en todos los idiomas. El aviso sobre los archivos de la carpeta de copias que no son copias de ClipMenu 2 también muestra bien su número.";
