@@ -311,5 +311,7 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder 的「顯示簡介」現在會顯示 ClipMenu 的版權聲明，與關於面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "ClipMenu 2 現在在應用程式介面各處都使用同一個名稱。你的剪貼簿歷史記錄、片段與設定都沒有變化。";
-"app.whatsNew.changed1" = "應用程式在各處都稱自己為「ClipMenu 2」。選單列與「關於」顯示的是「ClipMenu 2」，但結束、開啟、初次設定畫面、登入時啟動詢問、貼上權限說明等 12 處仍寫著「ClipMenu」，應用程式對自己的名稱前後不一致。現在這些都已統一。對 Naotaka Morimoto 所寫、本應用程式據以重寫的原版 ClipMenu 的指稱，仍刻意保留原名。";
+"app.whatsNew.summary" = "ClipMenu 2 現已支援俄文，先前仍顯示為英文的部分設定也已翻譯。";
+"app.whatsNew.added1" = "俄文。在設定的「語言」中選擇後，應用程式會立即切換，無需重新啟動。";
+"app.whatsNew.fixed1" = "「同步與備份」面板的大部分內容、片段編輯器中的「片段」欄、「最大縮圖尺寸」設定，以及快速鍵錄製時的提示，無論選擇哪種語言都顯示為英文。現在都已翻譯。";
+"app.whatsNew.fixed2" = "「從備份還原」列表現在以「3 個資料夾 · 12 個片段」的形式顯示數量，在各種語言中都能正確閱讀。關於備份資料夾中非 ClipMenu 2 備份檔案的提示，也會正確顯示數量。";

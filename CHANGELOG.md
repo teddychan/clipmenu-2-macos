@@ -3,7 +3,9 @@
 Developer-facing notes for ClipMenu. User-facing release notes live in
 `App/Sources/ClipMenu/WhatsNewConfig.swift` (shown in the in-app What's New pane).
 
-## Unreleased
+## 2.22.0 (2026-11-03)
+
+Russian, and the strings that still showed English in every language.
 
 ### Added
 - **Russian.** `ru.lproj` translates every key in `en.lproj`, in the same order and with the
@@ -36,6 +38,9 @@ Developer-facing notes for ClipMenu. User-facing release notes live in
   thumbnail size:", "px" and the shortcut recorder's two messages. All eight tables now carry
   them, in the same order. `LocalizationCoverageTests` fails on any literal `L()` key a
   translated table lacks and on any translation whose printf specifiers differ from its key's.
+- **A snippet editor test failed on macOS 27.** On macOS 27, ViewInspector's snapshot of the
+  hosted editor never contains `@Query` rows, so `folderRowsRenderTitlesFromQuery` failed there
+  while CI's macOS 26 runner passed it. Two tests that check `FolderNameField` directly replace it.
 
 ### Changed
 - **DragonKit 4.1.2 → 4.2.0**, which adds `DragonLanguage.ru`. CONFORMANCE §R13 reads the kit's

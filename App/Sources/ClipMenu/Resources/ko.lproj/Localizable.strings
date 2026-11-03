@@ -311,5 +311,7 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder의 정보 가져오기 창에 정보 패널과 같은 ClipMenu의 저작권 표시가 표시됩니다.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "ClipMenu 2가 앱 내 모든 곳에서 같은 이름을 사용합니다. 클립보드 기록과 스니펫, 설정은 그대로입니다.";
-"app.whatsNew.changed1" = "앱 이름이 어디에서나 ‘ClipMenu 2’로 표기됩니다. 메뉴 바와 정보 창은 ‘ClipMenu 2’를 보여 주는데도 종료, 열기, 초기 설정 화면, 로그인 시 실행 여부 확인, 붙여넣기 권한 안내 등 12곳은 ‘ClipMenu’로 남아 있어 앱이 자기 이름을 두고 서로 어긋났습니다. 이제 모두 일치합니다. 이 앱이 다시 만든 원본인 Naotaka Morimoto의 ClipMenu를 가리키는 표현은 의도적으로 원래 이름을 유지합니다.";
+"app.whatsNew.summary" = "ClipMenu 2가 이제 러시아어를 지원하며, 영어로 남아 있던 설정 일부가 번역되었습니다.";
+"app.whatsNew.added1" = "러시아어. 설정의 언어에서 선택하면 재시작 없이 바로 바뀝니다.";
+"app.whatsNew.fixed1" = "동기화 및 백업 패널 대부분, 스니펫 편집기의 스니펫 열, 최대 썸네일 크기 설정, 단축키 기록기의 메시지가 어떤 언어를 선택해도 영어로 표시되었습니다. 이제 모두 번역됩니다.";
+"app.whatsNew.fixed2" = "백업에서 복원 목록이 개수를 ‘폴더 3개 · 스니펫 12개’처럼 표시하므로 모든 언어에서 자연스럽게 읽힙니다. 백업 폴더에 있는 ClipMenu 2 백업이 아닌 파일에 대한 안내도 개수를 올바르게 표시합니다.";

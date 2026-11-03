@@ -311,5 +311,7 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "La fenêtre Lire les informations du Finder affiche désormais le copyright de ClipMenu, la même ligne que celle du panneau À propos.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "ClipMenu 2 porte désormais le même nom partout dans son interface. Votre historique de presse-papiers, vos extraits et vos réglages sont inchangés.";
-"app.whatsNew.changed1" = "L’app s’appelle \"ClipMenu 2\" partout. Douze endroits de sa propre interface indiquaient encore \"ClipMenu\" — dont Quitter, Ouvrir, les écrans de bienvenue, l’invite de lancement à l’ouverture de session et l’indication sur l’autorisation de collage — alors que la barre des menus et À propos affichaient \"ClipMenu 2\". L’app se contredisait sur son propre nom. Tous concordent désormais. Les références au ClipMenu d’origine de Naotaka Morimoto, dont cette app est une réécriture, conservent volontairement le nom d’origine.";
+"app.whatsNew.summary" = "Le russe fait désormais partie des langues de ClipMenu 2, et des parties des Réglages restées en anglais sont traduites.";
+"app.whatsNew.added1" = "Russe. Choisissez-le dans Langue, dans les Réglages, et l’app change aussitôt, sans redémarrer.";
+"app.whatsNew.fixed1" = "La plupart du panneau Synchronisation et sauvegarde, la colonne Fragment de l’éditeur de fragments, le réglage Taille maximale des vignettes et les messages de l’enregistreur de raccourcis s’affichaient en anglais quelle que soit votre langue. Ils sont maintenant traduits.";
+"app.whatsNew.fixed2" = "Restaurer une sauvegarde affiche les nombres sous la forme \"Dossiers : 3 · Fragments : 12\", lisible dans toutes les langues. La note sur les fichiers du dossier de sauvegarde qui ne sont pas des sauvegardes ClipMenu 2 affiche aussi correctement leur nombre.";
