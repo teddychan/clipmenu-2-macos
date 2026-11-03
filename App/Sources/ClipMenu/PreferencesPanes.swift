@@ -52,7 +52,7 @@ struct GeneralPreferencesView: View {
     var body: some View {
         DragonForm {
             DragonSection {
-                // DragonKit's shared 7-language switcher — switches live, no restart.
+                // DragonKit's shared language switcher — switches live, no restart.
                 LanguagePicker()
             }
             DragonSection {
