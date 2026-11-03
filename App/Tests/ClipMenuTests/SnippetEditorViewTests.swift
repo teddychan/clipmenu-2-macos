@@ -11,13 +11,13 @@ import DragonKit
 // hosted with an in-memory ModelContainer via ViewHosting so those dynamic
 // properties resolve, then inspected.
 //
-// Deterministic-snapshot note: under ViewHosting, `@Query` DOES populate on the
-// first render (folder rows appear), but `@State` mutated in `.onAppear`
-// (selectedFolderID = first folder) is NOT reflected in the initial `inspect()`
-// snapshot. So selection is always nil when inspected — the snippets/detail
-// columns reliably render their empty states, and there is no external hook to
-// set the selection @State. That fixes what is coverable (see coverage notes at
-// the bottom of this file for what is not).
+// Deterministic-snapshot note: whether `@Query` rows appear in the initial
+// `inspect()` snapshot depends on the OS (they do on macOS 26, not on macOS 27),
+// so no test here relies on folder rows; the row's title view is tested directly.
+// `@State` mutated in `.onAppear` (selectedFolderID = first folder) is NOT
+// reflected in the snapshot either, so selection is always nil when inspected and
+// the snippets/detail columns render their empty states. See the coverage notes
+// at the bottom of this file for what is not coverable.
 //
 // Localized strings come from DragonKit's L(...); the tests call L(...) so they
 // assert whatever the test bundle actually returns (the base English key here).
@@ -127,23 +127,16 @@ import DragonKit
         }
     }
 
-    @Test func folderRowsRenderTitlesFromQuery() throws {
-        try withFolderSort(0) {
-            let container = try makeContainer()
-            container.mainContext.insert(Folder(title: "Alpha", index: 0))
-            container.mainContext.insert(Folder(title: "Beta", index: 1))
-            try container.mainContext.save()
-            let view = SnippetEditorView().modelContainer(container)
-            ViewHosting.host(view: view)
-            defer { ViewHosting.expel() }
-            // @Query populates → folderRow renders each folder's FolderNameField in
-            // its non-editing (Text) branch.
-            #expect(throws: Never.self) { try view.inspect().find(text: "Alpha") }
-            #expect(throws: Never.self) { try view.inspect().find(text: "Beta") }
-            // No row is in edit mode (editingFolderID is nil), so FolderNameField
-            // shows Text, never its TextField branch.
-            #expect((try? view.inspect().find(ViewType.TextField.self)) == nil)
-        }
+    @Test func folderTitleShowsAsTextWhenNotEditing() throws {
+        let field = FolderNameField(text: .constant("Alpha"), isEditing: .constant(false))
+        #expect(try field.inspect().find(ViewType.Text.self).string() == "Alpha")
+        #expect((try? field.inspect().find(ViewType.TextField.self)) == nil)
+    }
+
+    @Test func folderTitleBecomesEditableWhenEditing() throws {
+        let field = FolderNameField(text: .constant("Alpha"), isEditing: .constant(true))
+        #expect(throws: Never.self) { try field.inspect().find(ViewType.TextField.self) }
+        #expect((try? field.inspect().find(text: "Alpha")) == nil)
     }
 }
 
