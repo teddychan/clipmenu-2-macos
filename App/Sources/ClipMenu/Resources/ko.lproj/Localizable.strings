@@ -311,6 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder의 정보 가져오기 창에 정보 패널과 같은 ClipMenu의 저작권 표시가 표시됩니다.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "macOS 27에서 ClipMenu 2 메뉴의 아이콘이 다시 표시됩니다.";
-"app.whatsNew.fixed1" = "macOS 27에서 ClipMenu 2 메뉴의 아이콘이 사라졌습니다. 스니펫, 스니펫 폴더, 기록 폴더, 동작뿐 아니라 ClipMenu 2 정보, 업데이트 확인, 설정, ClipMenu 2 종료에도 아이콘이 표시되지 않았습니다. 이제 모두 다시 아이콘이 표시됩니다. 이전 버전의 macOS에서는 달라진 것이 없습니다.";
-"app.whatsNew.changed1" = "DragonKit 4.3.0으로 업데이트했습니다. 설정, 정보, 새로운 기능, 소프트웨어 업데이트를 지원하는 공유 프레임워크입니다. ClipMenu 2 정보, 업데이트 확인, 설정, ClipMenu 2 종료의 아이콘은 이 업데이트로 다시 표시됩니다.";
+"app.whatsNew.summary" = "업데이트 확인이 이제 ClipMenu 2의 현재 웹 주소를 사용합니다.";
+"app.whatsNew.changed1" = "업데이트 확인이 이제 앱의 현재 웹 주소를 사용합니다. 앱의 다른 부분은 달라진 것이 없습니다.";

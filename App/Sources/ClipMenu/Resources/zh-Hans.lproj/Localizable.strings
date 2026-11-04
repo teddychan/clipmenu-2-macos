@@ -311,6 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "访达的“显示简介”现在会显示 ClipMenu 的版权声明，与关于面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "在 macOS 27 上，ClipMenu 2 菜单中的图标重新显示了。";
-"app.whatsNew.fixed1" = "在 macOS 27 上，ClipMenu 2 的菜单失去了图标。片段、片段文件夹、“历史”中的文件夹和动作都不显示图标，“关于 ClipMenu 2”“检查更新”“设置”和“退出 ClipMenu 2”也一样。现在这些图标都重新显示。更早版本的 macOS 上外观不变。";
-"app.whatsNew.changed1" = "更新到 DragonKit 4.3.0，这是支撑设置、关于、新功能和软件更新的共享框架。“关于 ClipMenu 2”“检查更新”“设置”和“退出 ClipMenu 2”的图标正是因它而恢复。";
+"app.whatsNew.summary" = "检查更新现在使用 ClipMenu 2 当前的网址。";
+"app.whatsNew.changed1" = "检查更新现在使用应用当前的网址。应用的其他部分没有变化。";

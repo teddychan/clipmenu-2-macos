@@ -311,6 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "El panel Obtener información del Finder ahora muestra el copyright de ClipMenu, la misma línea que muestra el panel Acerca de.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "En macOS 27, los iconos de los menús de ClipMenu 2 vuelven a verse.";
-"app.whatsNew.fixed1" = "En macOS 27, los menús de ClipMenu 2 habían perdido sus iconos. Los fragmentos, las carpetas de fragmentos, las carpetas del Historial y las acciones no los mostraban, y tampoco Acerca de, Buscar actualizaciones, Ajustes y Salir. Todos vuelven a mostrar su icono. Las versiones anteriores de macOS se ven igual que antes.";
-"app.whatsNew.changed1" = "Actualizado a DragonKit 4.3.0, el framework compartido detrás de Ajustes, Acerca de, Novedades y las actualizaciones de software. Los iconos de Acerca de, Buscar actualizaciones, Ajustes y Salir vuelven gracias a él.";
+"app.whatsNew.summary" = "La búsqueda de actualizaciones ahora usa la dirección web actual de ClipMenu 2.";
+"app.whatsNew.changed1" = "La búsqueda de actualizaciones ahora usa la dirección web actual de la app. Nada más cambia en la app.";
