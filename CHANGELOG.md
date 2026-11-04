@@ -3,6 +3,15 @@
 Developer-facing notes for ClipMenu. User-facing release notes live in
 `App/Sources/ClipMenu/WhatsNewConfig.swift` (shown in the in-app What's New pane).
 
+## 2.22.2 (2026-11-04)
+
+Update checks now use ClipMenu 2's current web address. Nothing else changes in the app.
+
+### Changed
+- **Update feed address.** `SUFeedURL` in `App/Info.plist` now points at the renamed repository,
+  `teddychan/clipmenu-2-macos`. Copies of 2.22.1 and earlier check the old address, which GitHub
+  redirects, so they keep finding updates. This release moves them to the new address.
+
 ## 2.22.1 (2026-11-03)
 
 On macOS 27, the icons in ClipMenu 2's menus show again.
