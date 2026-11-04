@@ -83,6 +83,11 @@ actor PasteboardMonitor {
         // frontmost at the prior tick (a clipboard manager silently losing clips
         // is worse than the narrow race it closed).
         guard let snapshot = PasteboardReader.snapshot() else { return }
+        // snapshot() checks the front app and the privacy markers before it reads
+        // the payload. If another app copied in between (1Password writing a
+        // concealed password, say), the payload belongs to that newer copy, so
+        // drop this one; the next poll sees the new changeCount and reads it whole.
+        guard NSPasteboard.general.changeCount == current else { return }
         await clipStore?.capture(snapshot)
     }
 }
