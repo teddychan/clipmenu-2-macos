@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder の「情報を見る」に、「情報」パネルと同じ ClipMenu の著作権表示が表示されるようになりました。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "アップデートの確認で、ClipMenu 2 の現在のウェブアドレスを使うようになりました。";
-"app.whatsNew.changed1" = "アップデートの確認で、アプリの現在のウェブアドレスを使うようになりました。アプリのほかの部分は変わりません。";
+"app.whatsNew.summary" = "パスワード管理アプリがコピーしたパスワードが、ClipMenu 2 の履歴に入り込むことはなくなりました。";
+"app.whatsNew.fixed1" = "ClipMenu 2 がクリップボードを読み取っている最中に 1Password などのパスワード管理アプリがパスワードをコピーすると、そのパスワードが履歴に保存されることがありました。「除外するアプリケーション」に入れたアプリでのコピーも同じように入り込むことがあり、その瞬間にクリップボードを消去すると空の項目が残ることもありました。ClipMenu 2 は読み取り中にクリップボードが変わったことを検知し、新しいコピーを次の確認で読み取るようになりました。";

@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder의 정보 가져오기 창에 정보 패널과 같은 ClipMenu의 저작권 표시가 표시됩니다.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "업데이트 확인이 이제 ClipMenu 2의 현재 웹 주소를 사용합니다.";
-"app.whatsNew.changed1" = "업데이트 확인이 이제 앱의 현재 웹 주소를 사용합니다. 앱의 다른 부분은 달라진 것이 없습니다.";
+"app.whatsNew.summary" = "암호 관리 앱이 복사한 암호가 더 이상 ClipMenu 2의 기록에 들어가지 않습니다.";
+"app.whatsNew.fixed1" = "ClipMenu 2가 클립보드를 읽는 순간 1Password 같은 암호 관리 앱이 암호를 복사하면, 그 암호가 기록에 저장될 수 있었습니다. 제외할 응용 프로그램에 넣은 앱에서 한 복사도 같은 방식으로 들어갈 수 있었고, 그 순간 클립보드를 비우면 빈 항목이 남을 수 있었습니다. 이제 ClipMenu 2는 읽는 도중 클립보드가 바뀐 것을 알아채고, 새 복사본은 다음 확인 때 읽습니다.";

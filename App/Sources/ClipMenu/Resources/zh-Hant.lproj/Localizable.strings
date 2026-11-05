@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder 的「顯示簡介」現在會顯示 ClipMenu 的版權聲明，與關於面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "檢查更新現在使用 ClipMenu 2 目前的網址。";
-"app.whatsNew.changed1" = "檢查更新現在使用 App 目前的網址。App 的其他部分沒有變化。";
+"app.whatsNew.summary" = "密碼管理器複製的密碼不會再混進 ClipMenu 2 的歷史。";
+"app.whatsNew.fixed1" = "如果 1Password 或其他密碼管理器恰好在 ClipMenu 2 讀取剪貼板時複製了密碼，這個密碼可能會被存進歷史。在「排除的應用程式」中的 App 裡複製的內容也可能這樣混進來，而在那一刻清空剪貼板可能留下一個空白項目。現在 ClipMenu 2 會發現剪貼板在讀取過程中有所變化，並在下一次檢查時讀取新的內容。";

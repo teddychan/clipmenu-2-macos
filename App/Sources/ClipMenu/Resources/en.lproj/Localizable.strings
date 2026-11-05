@@ -300,5 +300,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Update checks now use ClipMenu 2's current web address.";
-"app.whatsNew.changed1" = "Update checks now use the app's current web address. Nothing else changes in the app.";
+"app.whatsNew.summary" = "A password copied by a password manager can no longer slip into ClipMenu 2's history.";
+"app.whatsNew.fixed1" = "If 1Password or another password manager copied a password just as ClipMenu 2 was reading the clipboard, the password could be saved in your history. A copy made in an app under Exclude Applications could slip in the same way, and clearing the clipboard at that moment could leave a blank clip. ClipMenu 2 now notices when the clipboard changes while it reads, and reads the new copy on its next check.";
