@@ -3,6 +3,21 @@
 Developer-facing notes for ClipMenu. User-facing release notes live in
 `App/Sources/ClipMenu/WhatsNewConfig.swift` (shown in the in-app What's New pane).
 
+## 2.22.3 (2026-11-05)
+
+A password that a password manager copies while ClipMenu 2 is reading the clipboard no longer
+lands in history.
+
+### Fixed
+- **Clipboard read race.** `PasteboardReader.snapshot()` checks the frontmost app and the
+  nspasteboard.org privacy markers on one copy, then reads the text. When another app copied in
+  between, the text came from the newer copy but was judged by the older one. A password that
+  1Password copied at that moment, marked `org.nspasteboard.ConcealedType`, could be saved in
+  history in plain text. A copy from an app in Exclude Applications could get in the same way, and
+  a clipboard cleared at that moment left a blank clip. `PasteboardMonitor.poll()` now reads
+  `changeCount` again after `snapshot()` and skips the capture when it moved, so the next poll
+  reads the new copy whole (#118).
+
 ## 2.22.2 (2026-11-04)
 
 Update checks now use ClipMenu 2's current web address. Nothing else changes in the app.

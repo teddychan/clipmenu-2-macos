@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "El panel Obtener información del Finder ahora muestra el copyright de ClipMenu, la misma línea que muestra el panel Acerca de.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "La búsqueda de actualizaciones ahora usa la dirección web actual de ClipMenu 2.";
-"app.whatsNew.changed1" = "La búsqueda de actualizaciones ahora usa la dirección web actual de la app. Nada más cambia en la app.";
+"app.whatsNew.summary" = "Una contraseña copiada por un gestor de contraseñas ya no puede colarse en el historial de ClipMenu 2.";
+"app.whatsNew.fixed1" = "Si 1Password u otro gestor de contraseñas copiaba una contraseña justo cuando ClipMenu 2 leía el portapapeles, la contraseña podía guardarse en tu historial. Una copia hecha en una app de Excluir aplicaciones podía colarse de la misma forma, y vaciar el portapapeles en ese momento podía dejar un elemento en blanco. Ahora ClipMenu 2 detecta cuando el portapapeles cambia mientras lo lee, y lee la nueva copia en su siguiente comprobación.";
