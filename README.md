@@ -213,7 +213,11 @@ the Homebrew cask.
 
 The Mac App Store package is a second distribution channel for that same release, not a
 second version series: run **Release (Mac App Store)** from the Actions tab and give it the
-existing `vX.Y.Z` tag. It refuses anything that is not an exact public tag. See
+existing `vX.Y.Z` tag. It refuses anything that is not an exact public tag. After the
+upload it fills the App Store What's New from the Release's `whats-new.json` and submits
+the version for App Review, released automatically once approved. That step needs an App
+Store Connect key with the App Manager role in the `ASC_APP_MANAGER_*` secrets; without it
+the step is skipped with a notice and both are done by hand in App Store Connect. See
 [`.github/workflows/release.yml`](.github/workflows/release.yml) and
 [`.github/workflows/release-mas.yml`](.github/workflows/release-mas.yml).
 
