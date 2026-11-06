@@ -1,7 +1,8 @@
 # Changelog
 
-Developer-facing notes for ClipMenu. User-facing release notes live in
-`App/Sources/ClipMenu/WhatsNewConfig.swift` (shown in the in-app What's New pane).
+Changes in each version of ClipMenu. Each entry is also that version's tag message and the notes
+of its GitHub Release. The in-app What's New pane shows a separate, translated text from
+`App/Sources/ClipMenu/WhatsNewConfig.swift`.
 
 ## 2.22.3 (2026-11-05)
 

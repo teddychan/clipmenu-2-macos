@@ -247,8 +247,9 @@ state such as `NSPasteboard.general`.
 Bug reports and feature requests are welcome on the
 [issues page](https://github.com/teddychan/clipmenu-2-macos/issues). For pull requests, keep
 changes focused, run `App/scripts/test.sh` before you push, and record notable
-changes in [CHANGELOG.md](CHANGELOG.md) (developer-facing notes; the user-facing
-release notes live in `App/Sources/ClipMenu/WhatsNewConfig.swift`).
+changes in [CHANGELOG.md](CHANGELOG.md) (each version's entry is also its tag message and
+GitHub Release notes; the in-app What's New text lives in
+`App/Sources/ClipMenu/WhatsNewConfig.swift`).
 
 ## Credits
 
