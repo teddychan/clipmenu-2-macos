@@ -32,6 +32,14 @@ name: Release (Mac App Store)
 #   APPLE_TEAM_ID             10-char Team ID (substituted into the entitlements)
 #   NOTARY_KEY_P8_BASE64 / NOTARY_KEY_ID / NOTARY_ISSUER_ID
 #                             App Store Connect API key (used for the upload)
+#
+# Optional repository secrets, for the `submit` job:
+#   ASC_APP_MANAGER_KEY_P8_BASE64 / ASC_APP_MANAGER_KEY_ID / ASC_APP_MANAGER_ISSUER_ID
+#                             an App Store Connect API key with the App Manager role. With
+#                             all three set, `submit` fills What's New from the Release's
+#                             whats-new.json and submits the version for App Review, released
+#                             automatically once approved (dragon-release-ci's asc-submit.py).
+#                             With none set, it skips with a notice and both are done by hand.
 
 on:
   workflow_dispatch:
@@ -261,3 +269,62 @@ jobs:
           # endpoints the key's role forbids; altool only delivers the .pkg.
           xcrun altool --upload-app --type macos --file "$PKG" \
             --apiKey "$NOTARY_KEY_ID" --apiIssuer "$NOTARY_ISSUER_ID"
+
+  # Fill What's New and submit the uploaded version for App Review. A job of its own so that
+  # "Re-run failed jobs" retries only this, without building and uploading a second .pkg, and
+  # so the wait for App Store Connect to process the build holds an Ubuntu runner, not a Mac.
+  submit:
+    needs: appstore
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for the App Manager key
+        id: key
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_APP_MANAGER_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_APP_MANAGER_ISSUER_ID }}
+          ASC_KEY_P8_BASE64: ${{ secrets.ASC_APP_MANAGER_KEY_P8_BASE64 }}
+        run: |
+          set -euo pipefail
+          missing=()
+          [ -n "${ASC_KEY_ID:-}" ] || missing+=(ASC_APP_MANAGER_KEY_ID)
+          [ -n "${ASC_ISSUER_ID:-}" ] || missing+=(ASC_APP_MANAGER_ISSUER_ID)
+          [ -n "${ASC_KEY_P8_BASE64:-}" ] || missing+=(ASC_APP_MANAGER_KEY_P8_BASE64)
+          if [ "${#missing[@]}" -eq 3 ]; then
+            echo "::notice::The build is uploaded, but this repo has no App Store Connect App Manager key, so What's New and the App Review submission were skipped. Do both by hand in App Store Connect."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          elif [ "${#missing[@]}" -gt 0 ]; then
+            echo "::error::The App Manager key is only partly set; missing ${missing[*]}. Set all three secrets, or none." >&2
+            exit 1
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out dragon-release-ci
+        if: steps.key.outputs.ready == 'true'
+        uses: actions/checkout@v7
+        with:
+          repository: teddychan/dragon-release-ci
+          ref: refs/tags/v6
+          path: dragon-release-ci
+          persist-credentials: false
+
+      - name: Fill What's New and submit for App Review
+        if: steps.key.outputs.ready == 'true'
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_APP_MANAGER_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_APP_MANAGER_ISSUER_ID }}
+          ASC_KEY_P8_BASE64: ${{ secrets.ASC_APP_MANAGER_KEY_P8_BASE64 }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: |
+          set -euo pipefail
+          # The appstore job already proved RELEASE_TAG is an exact vX.Y.Z tag whose commit
+          # carries that version. asc-submit.py waits for App Store Connect to finish processing
+          # the upload, attaches the build, sets What's New on every store locale (English for a
+          # locale with no notes), sets "release automatically once approved" and submits. A
+          # version already in review is left alone, so a re-run is safe.
+          export ASC_KEY_P8="$RUNNER_TEMP/asc-app-manager.p8"
+          (umask 077; printf '%s' "$ASC_KEY_P8_BASE64" | base64 --decode > "$ASC_KEY_P8")
+          python3 dragon-release-ci/scripts/asc-submit.py \
+            --bundle-id com.dragonapp.clipmenu-2 \
+            --version "${RELEASE_TAG#v}" \
+            --whats-new "https://github.com/${GITHUB_REPOSITORY}/releases/download/${RELEASE_TAG}/whats-new.json"
