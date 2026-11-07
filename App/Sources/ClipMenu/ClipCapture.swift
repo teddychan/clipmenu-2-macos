@@ -297,12 +297,13 @@ actor ClipStore {
     /// copies; the menu showed each as a blank "N." row. Runs at every launch and
     /// finds nothing once they are gone.
     func removeEmptyClips() {
-        let descriptor = FetchDescriptor<ClipRecord>(predicate: #Predicate {
-            $0.stringValue == nil && $0.urlString == nil && $0.image == nil
-        })
+        // One condition only: CI's older compiler can't type-check a compound
+        // #Predicate here. The rest is checked in Swift, cheapest field first.
+        let descriptor = FetchDescriptor<ClipRecord>(predicate: #Predicate { $0.stringValue == nil })
         guard let candidates = try? modelContext.fetch(descriptor) else { return }
         let empty = candidates.filter {
-            ($0.filenames?.isEmpty ?? true) && $0.rtfData == nil && $0.pdfData == nil
+            $0.urlString == nil && $0.image == nil && ($0.filenames?.isEmpty ?? true)
+                && $0.rtfData == nil && $0.pdfData == nil
         }
         guard !empty.isEmpty else { return }
         for clip in empty { modelContext.delete(clip) }
