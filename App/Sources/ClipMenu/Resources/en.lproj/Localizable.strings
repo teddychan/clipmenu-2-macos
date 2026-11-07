@@ -300,5 +300,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "History items copied as rich text or as a link now show their text in the menu.";
-"app.whatsNew.fixed1" = "Some apps copy text only as rich text, and some copy a link with no plain text. ClipMenu 2 saved and pasted these, but the menu showed only their number. The menu now shows their text, or the link's address.";
+"app.whatsNew.summary" = "Empty copies no longer leave a blank row at the top of your history.";
+"app.whatsNew.fixed1" = "Some apps put a copy on the clipboard that holds nothing. ClipMenu 2 saved it as an empty item, which showed as a blank row and kept moving back to the top. ClipMenu 2 now skips these copies and removes the empty items already in your history.";

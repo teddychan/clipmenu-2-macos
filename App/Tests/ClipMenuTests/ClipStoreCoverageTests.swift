@@ -103,6 +103,36 @@ import AppKit
         #expect(record.createdDate == old, "createdDate is preserved on dedup")
     }
 
+    // removeEmptyClips: deletes clips with no data in any field (saved before
+    // snapshot() skipped empty copies) and keeps every clip that holds something.
+    @Test func removeEmptyClipsDeletesOnlyClipsWithNoData() async throws {
+        let container = try inMemoryContainer()
+        let seed = ModelContext(container)
+        let base = Date(timeIntervalSince1970: 1_000_000)
+        func add(_ hash: Int, _ types: [String], string: String? = nil, url: String? = nil,
+                 rtf: Data? = nil, files: [String]? = nil, image: Data? = nil) {
+            seed.insert(ClipRecord(createdDate: base, lastUsedDate: base, typeIdentifiers: types,
+                                   stringValue: string, rtfData: rtf, filenames: files, urlString: url,
+                                   image: image.map(ClipImage.init(data:)), contentHash: hash))
+        }
+        add(1, ["String", "URL"])                       // empty: declared, no data
+        add(2, ["TIFF"])                                // empty: no image
+        add(3, ["Filenames"], files: [])                // empty: no file names
+        add(4, ["String"], string: "text")
+        add(5, ["URL"], url: "https://example.com")
+        add(6, ["RTF"], rtf: Data("{\\rtf1 a}".utf8))
+        add(7, ["Filenames"], files: ["/tmp/a"])
+        add(8, ["TIFF"], image: makeTIFFData())
+        try seed.save()
+
+        let store = ClipStore(modelContainer: container)
+        await store.removeEmptyClips()
+
+        let ctx = ModelContext(container)
+        let hashes = try ctx.fetch(FetchDescriptor<ClipRecord>()).map(\.contentHash).sorted()
+        #expect(hashes == [4, 5, 6, 7, 8])
+    }
+
     // backfillThumbnails: generates thumbnails for pre-thumbnail TIFF clips, ignores
     // non-image clips, and is idempotent (a second run changes nothing).
     @Test func backfillThumbnailsIsTiffOnlyAndIdempotent() async throws {

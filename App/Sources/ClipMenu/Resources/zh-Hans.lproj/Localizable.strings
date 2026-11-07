@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "访达的“显示简介”现在会显示 ClipMenu 的版权声明，与关于面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "以富文本或链接形式复制的历史项目，现在会在菜单中显示文字。";
-"app.whatsNew.fixed1" = "有些应用只以富文本形式复制文字，有些应用复制链接时不带纯文本。ClipMenu 2 能保存并粘贴这些内容，但菜单中只显示编号。现在菜单会显示它们的文字或链接地址。";
+"app.whatsNew.summary" = "空白的复制内容不会再在历史顶部留下空行。";
+"app.whatsNew.fixed1" = "有些应用会把不含任何内容的复制放到剪贴板。ClipMenu 2 曾把它存成空白项目，显示为一行空白，并且反复回到顶部。现在 ClipMenu 2 会跳过这类复制，并删除历史中已有的空白项目。";

@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder의 정보 가져오기 창에 정보 패널과 같은 ClipMenu의 저작권 표시가 표시됩니다.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "서식 있는 텍스트나 링크로 복사한 기록 항목이 이제 메뉴에 텍스트를 표시합니다.";
-"app.whatsNew.fixed1" = "일부 앱은 텍스트를 서식 있는 텍스트로만 복사하고, 일부 앱은 일반 텍스트 없이 링크만 복사합니다. ClipMenu 2는 이 항목을 저장하고 붙여넣을 수 있었지만 메뉴에는 번호만 표시했습니다. 이제 메뉴에 텍스트 또는 링크 주소를 표시합니다.";
+"app.whatsNew.summary" = "빈 복사본 때문에 기록 맨 위에 빈 행이 남지 않습니다.";
+"app.whatsNew.fixed1" = "일부 앱은 아무것도 담기지 않은 복사본을 클립보드에 올립니다. ClipMenu 2는 이를 빈 항목으로 저장했고, 이 항목은 빈 행으로 표시되며 계속 맨 위로 올라왔습니다. 이제 ClipMenu 2는 이런 복사본을 건너뛰고, 기록에 이미 있는 빈 항목을 삭제합니다.";

@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "La fenêtre Lire les informations du Finder affiche désormais le copyright de ClipMenu, la même ligne que celle du panneau À propos.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Les éléments de l’historique copiés en texte enrichi ou comme lien affichent désormais leur texte dans le menu.";
-"app.whatsNew.fixed1" = "Certaines apps copient du texte uniquement en texte enrichi, et d’autres copient un lien sans texte brut. ClipMenu 2 les enregistrait et les collait, mais le menu n’affichait que leur numéro. Le menu affiche maintenant leur texte, ou l’adresse du lien.";
+"app.whatsNew.summary" = "Les copies vides ne laissent plus de ligne vide en haut de l’historique.";
+"app.whatsNew.fixed1" = "Certaines apps placent dans le presse-papiers une copie qui ne contient rien. ClipMenu 2 l’enregistrait comme un élément vide, qui apparaissait comme une ligne vide et revenait sans cesse en haut. ClipMenu 2 ignore désormais ces copies et supprime les éléments vides déjà présents dans votre historique.";
