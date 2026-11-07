@@ -200,7 +200,7 @@
 "No backups yet." = "Резервных копий пока нет.";
 "Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "Элементов в этой папке, которые не являются резервными копиями ClipMenu 2: %d (например, экспорт из более старого приложения).";
 "Restore this backup?" = "Восстановить эту резервную копию?";
-"This replaces all your current snippets and folders. Your current snippets are backed up first." = "Все текущие фрагменты и папки будут заменены. Перед этим для текущих фрагментов будет создана резервная копия.";
+"This replaces all your current snippets and folders. Your current snippets are backed up first." = "Текущие фрагменты и папки будут заменены вместе с настройками и пользовательскими действиями из этой копии. Сначала будет сохранена резервная копия текущего состояния.";
 "Folders: %d" = "Папок: %d";
 "Snippets: %d" = "Фрагментов: %d";
 "Automatic" = "Автоматическая";
@@ -310,5 +310,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "В окне «Свойства» Finder теперь отображаются авторские права ClipMenu — та же строка, что и в разделе «О программе».";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Обслуживающий выпуск. ClipMenu 2 работает так же, как раньше.";
-"app.whatsNew.changed1" = "ClipMenu 2 теперь использует DragonKit 4.4.0, общий набор инструментов, на котором построены окна настроек, «О программе» и удаления. В разделе «О программе» отображается новая версия, больше ничего не меняется.";
+"app.whatsNew.summary" = "Резервные копии теперь сохраняют настройки и пользовательские действия.";
+"app.whatsNew.changed1" = "Восстановление резервной копии возвращает сохранённые настройки, включая язык, сочетания клавиш и пользовательские действия. Изменение настроек теперь создаёт новую резервную копию.";

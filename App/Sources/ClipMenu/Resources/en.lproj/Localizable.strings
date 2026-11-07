@@ -197,7 +197,7 @@
 "No backups yet." = "No backups yet.";
 "Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app).";
 "Restore this backup?" = "Restore this backup?";
-"This replaces all your current snippets and folders. Your current snippets are backed up first." = "This replaces all your current snippets and folders. Your current snippets are backed up first.";
+"This replaces all your current snippets and folders. Your current snippets are backed up first." = "This replaces your current snippets and folders, plus the settings and custom actions saved in this backup. Your current state is backed up first.";
 "Folders: %d" = "Folders: %d";
 "Snippets: %d" = "Snippets: %d";
 "Automatic" = "Automatic";
@@ -300,5 +300,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "A maintenance release. ClipMenu 2 works the same as before.";
-"app.whatsNew.changed1" = "ClipMenu 2 now uses DragonKit 4.4.0, the shared toolkit behind its Settings, About and Uninstall windows. The About pane shows the new version, and nothing else changes.";
+"app.whatsNew.summary" = "Backups now keep your settings and custom actions.";
+"app.whatsNew.changed1" = "Restore a backup to recover its saved settings, including language, shortcuts, and custom actions. Settings changes now create a new backup.";

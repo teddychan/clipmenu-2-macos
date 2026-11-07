@@ -158,7 +158,7 @@ import SwiftData
         let m = meta(recordName: "future.clipbackup", schemaVersion: 1, hash: "h")
         let store = MockBackupStore(seed: [.init(meta: m, payload: payload)])
 
-        await #expect(throws: SyncBackupError.unsupportedSchemaVersion(found: 999, supported: 1)) {
+        await #expect(throws: SyncBackupError.unsupportedSchemaVersion(found: 999, supported: SnippetSnapshot.currentSchemaVersion)) {
             try await manager(store, ctx).restore(m)
         }
         let folders = try ctx.fetch(FetchDescriptor<Folder>())

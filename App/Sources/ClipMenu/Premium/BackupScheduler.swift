@@ -1,6 +1,8 @@
 import Foundation
+import Darwin
 import AppKit
 import os
+import DragonKit
 
 /// Runs the once-per-launch automatic snippet backup into the user-chosen backup
 /// folder. A no-op until the user has picked a folder in the Sync/Backup pane.
@@ -20,8 +22,26 @@ enum BackupScheduler {
         return BackupManager(
             store: FolderBackupStore(folder: folder),
             context: AppStore.container.mainContext,
-            deviceName: ProcessInfo.processInfo.hostName,
-            appVersion: AppInfo.version)
+            deviceName: deviceName(),
+            appVersion: AppInfo.version,
+            didRestoreSettings: {
+                refreshLanguage()
+                MainMenuController.shared.registerAllMenuHotKeys()
+                let scoped = folder.startAccessingSecurityScopedResource()
+                defer { if scoped { folder.stopAccessingSecurityScopedResource() } }
+                SettingsSidecar.write(from: .standard, to: folder.appending(path: SettingsSidecar.fileName))
+            })
+    }
+
+    static func deviceName() -> String {
+        var name = [CChar](repeating: 0, count: 256)
+        guard gethostname(&name, name.count) == 0 else { return "Mac" }
+        return String(decoding: name.prefix { $0 != 0 }.map { UInt8(bitPattern: $0) }, as: UTF8.self)
+    }
+
+    static func refreshLanguage() {
+        let raw = UserDefaults.standard.string(forKey: "DragonKit.language")
+        LocalizationManager.shared.setLanguage(raw.flatMap(DragonLanguage.init(rawValue:)) ?? .system)
     }
 
     /// Fire-and-forget daily check; safe to call once at startup.

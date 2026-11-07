@@ -15,6 +15,7 @@ enum SettingsSidecar {
     /// `didMigrateToSplitStores`, the backup-folder bookmark/meta, and onboarding.
     static let syncedKeys: [String] = [
         // General
+        PreferenceKeys.appLanguage, "DragonKit.language", PreferenceKeys.automaticBackupEnabled,
         PreferenceKeys.inputPasteCommand, PreferenceKeys.reorderClipsAfterPasting, PreferenceKeys.maxHistorySize, PreferenceKeys.timeInterval,
         PreferenceKeys.saveHistoryOnQuit, PreferenceKeys.showStatusItem, PreferenceKeys.exportHistoryAsSingleFile,
         PreferenceKeys.tagOfSeparatorForExportHistoryToFile,
@@ -31,8 +32,42 @@ enum SettingsSidecar {
         PreferenceKeys.enableAction, PreferenceKeys.invokeActionImmediately, PreferenceKeys.controlClickBehavior, PreferenceKeys.shiftClickBehavior,
         PreferenceKeys.optionClickBehavior, PreferenceKeys.commandClickBehavior,
         // Shortcuts + exclusions
-        PreferenceKeys.hotKeys, PreferenceKeys.excludeApps,
+        PreferenceKeys.hotKeys, PreferenceKeys.excludeApps, "snippetEditor.folderSort",
     ]
+
+    static let backupKeys = syncedKeys + [
+        PreferenceKeys.loginItem, "SUEnableAutomaticChecks", "SUAutomaticallyUpdate",
+    ]
+
+    static func capture(from defaults: UserDefaults) throws -> [String: Data] {
+        var values: [String: Data] = [:]
+        for key in backupKeys {
+            if let value = defaults.object(forKey: key) {
+                values[key] = try PropertyListSerialization.data(
+                    fromPropertyList: ["value": value], format: .xml, options: 0)
+            }
+        }
+        return values
+    }
+
+    static func decoded(_ values: [String: Data]) throws -> [String: Any] {
+        var decoded: [String: Any] = [:]
+        for key in backupKeys {
+            guard let data = values[key] else { continue }
+            guard let container = try PropertyListSerialization.propertyList(
+                from: data, options: [], format: nil) as? [String: Any],
+                  let value = container["value"] else { throw SyncBackupError.validationFailed }
+            decoded[key] = value
+        }
+        return decoded
+    }
+
+    static func apply(_ values: [String: Any], to defaults: UserDefaults) {
+        for key in backupKeys {
+            if let value = values[key] { defaults.set(value, forKey: key) }
+            else { defaults.removeObject(forKey: key) }
+        }
+    }
 
     /// Write the whitelisted values from `defaults` to `url` (atomic). Returns false
     /// on failure.

@@ -153,6 +153,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if let backupFolder = BackupFolder.resolvedURL() {
             let scoped = backupFolder.startAccessingSecurityScopedResource()
             SettingsSidecar.read(from: backupFolder.appending(path: SettingsSidecar.fileName), into: .standard)
+            BackupScheduler.refreshLanguage()
             if scoped { backupFolder.stopAccessingSecurityScopedResource() }
         }
 

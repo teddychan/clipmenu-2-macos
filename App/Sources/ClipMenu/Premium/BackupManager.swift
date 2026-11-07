@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import DragonKit
 
 /// Coordinates snippet backups against a `BackupStore`. `@MainActor` because it
 /// reads/writes the `ModelContext`; CloudKit work happens on the store's actor.
@@ -9,6 +10,11 @@ final class BackupManager {
     private let context: ModelContext
     private let deviceName: String
     private let appVersion: String
+    private let defaults: UserDefaults
+    private let actionsURL: URL?
+    private let loginItemEnabled: () -> Bool
+    private let setLoginItemEnabled: (Bool) -> Void
+    private let didRestoreSettings: () -> Void
 
     /// True while a restore is replacing data. Shared across every
     /// `BackupManager` instance (the scheduler and the restore sheet each build
@@ -16,11 +22,37 @@ final class BackupManager {
     /// Main-actor-isolated, so all access is serialized.
     private static var isRestoring = false
 
-    init(store: BackupStore, context: ModelContext, deviceName: String, appVersion: String) {
+    init(
+        store: BackupStore, context: ModelContext, deviceName: String, appVersion: String,
+        defaults: UserDefaults = .standard, actionsURL: URL? = ActionStore.saveURL,
+        loginItemEnabled: @escaping () -> Bool = { LoginItem.isEnabled },
+        setLoginItemEnabled: @escaping (Bool) -> Void = { LoginItem.setEnabled($0) },
+        didRestoreSettings: @escaping () -> Void = {}
+    ) {
         self.store = store
         self.context = context
         self.deviceName = deviceName
         self.appVersion = appVersion
+        self.defaults = defaults
+        self.actionsURL = actionsURL
+        self.loginItemEnabled = loginItemEnabled
+        self.setLoginItemEnabled = setLoginItemEnabled
+        self.didRestoreSettings = didRestoreSettings
+    }
+
+    private func captureSnapshot() throws -> SnippetSnapshot {
+        var snapshot = try SnippetSnapshot.capture(from: context)
+        var settings = try SettingsSidecar.capture(from: defaults)
+        settings[PreferenceKeys.loginItem] = try PropertyListSerialization.data(
+            fromPropertyList: ["value": loginItemEnabled()], format: .xml, options: 0)
+        snapshot.settings = settings
+        if let actionsURL, FileManager.default.fileExists(atPath: actionsURL.path) {
+            snapshot.actions = try PropertyListDecoder().decode(
+                [ActionNode].self, from: Data(contentsOf: actionsURL))
+        } else {
+            snapshot.actions = ActionStore.defaultNodes()
+        }
+        return snapshot
     }
 
     // MARK: Backup
@@ -31,7 +63,7 @@ final class BackupManager {
     @discardableResult
     func backUpNow(kind: BackupKind, force: Bool = false, now: Date = Date()) async throws -> BackupResult {
         try await store.ensureZone()
-        let snapshot = try SnippetSnapshot.capture(from: context)
+        let snapshot = try captureSnapshot()
         // Encode + hash once, off the main actor (snapshot is Sendable). The bytes
         // and hash are reused for change detection, the saved metadata, and the
         // uploaded payload — so a large snippet set is serialized only once.
@@ -62,7 +94,7 @@ final class BackupManager {
     func runDailyCheck(now: Date = Date(), didSyncThisLaunch: Bool) async throws {
         guard !Self.isRestoring else { return }
         try await store.ensureZone()
-        let snapshot = try SnippetSnapshot.capture(from: context)
+        let snapshot = try captureSnapshot()
         // Never snapshot an empty local store that hasn't synced yet this launch:
         // on a fresh or slow-syncing device the CloudKit import may still be
         // pending, and uploading that empty state would make it the newest
@@ -113,12 +145,38 @@ final class BackupManager {
                 found: snapshot.schemaVersion, supported: SnippetSnapshot.currentSchemaVersion)
         }
 
+        let settings: [String: Any]?
+        do { settings = try snapshot.settings.map(SettingsSidecar.decoded) }
+        catch { throw SyncBackupError.validationFailed }
+        let actionData = try snapshot.actions.map { try PropertyListEncoder().encode($0) }
+        let previousActions = try actionsURL.flatMap { url in
+            FileManager.default.fileExists(atPath: url.path) ? try Data(contentsOf: url) : nil
+        }
+
         // Phase B — snapshot current state and confirm it persisted.
         do { try await backUpNow(kind: .preRestore, force: true) }
         catch { throw SyncBackupError.preRestoreFailed }
 
         // Phase C — replace, rolling back if the save fails.
-        try BackupManager.applyWithRollback(snapshot, to: context) { try self.context.save() }
+        if let actionData, let actionsURL {
+            try FileManager.default.createDirectory(
+                at: actionsURL.deletingLastPathComponent(), withIntermediateDirectories: true)
+            try actionData.write(to: actionsURL, options: .atomic)
+        }
+        do {
+            try BackupManager.applyWithRollback(snapshot, to: context) { try self.context.save() }
+        } catch {
+            if actionData != nil, let actionsURL {
+                if let previousActions { try previousActions.write(to: actionsURL, options: .atomic) }
+                else { try FileManager.default.removeItem(at: actionsURL) }
+            }
+            throw error
+        }
+        if let settings {
+            SettingsSidecar.apply(settings, to: defaults)
+            if let enabled = settings[PreferenceKeys.loginItem] as? Bool { setLoginItemEnabled(enabled) }
+            didRestoreSettings()
+        }
     }
 
     /// Apply a snapshot then run `save`; on failure, roll the context back so the
@@ -134,7 +192,7 @@ final class BackupManager {
     // MARK: Local cache (offline fallback only — CloudKit is the source of truth)
 
     private func cacheBaseline(date: Date, hash: String) {
-        UserDefaults.standard.set(date, forKey: PreferenceKeys.lastSnippetBackupDate)
-        UserDefaults.standard.set(hash, forKey: PreferenceKeys.lastSnippetBackupHash)
+        defaults.set(date, forKey: PreferenceKeys.lastSnippetBackupDate)
+        defaults.set(hash, forKey: PreferenceKeys.lastSnippetBackupHash)
     }
 }
