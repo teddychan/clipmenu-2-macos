@@ -19,7 +19,11 @@ enum BackupScheduler {
     /// nil when no folder is configured.
     static func makeManager() -> BackupManager? {
         guard let folder = BackupFolder.resolvedURL() else { return nil }
-        return BackupManager(
+        return makeManager(in: folder)
+    }
+
+    static func makeManager(in folder: URL) -> BackupManager {
+        BackupManager(
             store: FolderBackupStore(folder: folder),
             context: AppStore.container.mainContext,
             deviceName: deviceName(),

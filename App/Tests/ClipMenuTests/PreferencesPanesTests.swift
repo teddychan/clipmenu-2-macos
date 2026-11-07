@@ -315,12 +315,8 @@ struct BackupRestorePaneTests {
         try withPreservedDefaults(Self.ownedKeys) {
             UserDefaults.standard.set(false, forKey: PreferenceKeys.automaticBackupEnabled)
 
-            let view = CloudBackupPreferencesView()   // wraps BackupPreferencesView
+            let view = BackupAdditionalSettingsView()
 
-            #expect(throws: Never.self) { try view.inspect().find(text: L("Sync & Backup")) }
-            // These buttons render regardless of whether a folder is configured.
-            #expect(throws: Never.self) { try view.inspect().find(button: L("Back up now")) }
-            #expect(throws: Never.self) { try view.inspect().find(button: L("Restore…")) }
             // Automatic-backup toggle reflects its (owned) stored value.
             let auto = try view.inspect().find(ViewType.Toggle.self,
                 containing: L("Back up automatically when quitting")).isOn()
@@ -334,7 +330,7 @@ struct BackupRestorePaneTests {
             d.set(false, forKey: PreferenceKeys.exportHistoryAsSingleFile)
             d.set(4, forKey: PreferenceKeys.tagOfSeparatorForExportHistoryToFile)
 
-            let view = CloudBackupPreferencesView()
+            let view = BackupAdditionalSettingsView()
 
             #expect(throws: Never.self) {
                 try view.inspect().find(text: L("Clipboard History Export"))
@@ -351,25 +347,19 @@ struct BackupRestorePaneTests {
         }
     }
 
-    /// The restore sheet's own view. Built from an in-memory `MockBackupStore`
-    /// (defined in BackupManagerTests) and an in-memory SwiftData context, so it
-    /// touches no shared UserDefaults and cannot race other suites.
-    @Test func restoreVersionsViewShowsHeaderAndButtons() throws {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(
-            for: Folder.self, Snippet.self, ClipRecord.self, configurations: config)
-        let manager = BackupManager(
-            store: MockBackupStore(), context: ModelContext(container),
-            deviceName: "TestMac", appVersion: "9.9.9")
-
-        let view = RestoreVersionsView(manager: manager)
-        // `.task { load() }` does not fire under plain inspection, so the view
-        // stays in its loading state; the header and Cancel/Restore controls are
-        // present regardless of load state.
-        #expect(throws: Never.self) { try view.inspect().find(text: L("Restore from Backup")) }
-        #expect(throws: Never.self) { try view.inspect().find(button: L("Cancel")) }
-        #expect(throws: Never.self) { try view.inspect().find(button: L("Restore")) }
+    @Test func sharedBackupPaneUsesCanonicalIdentityAndContents() {
+        let pane = BackupSettingsPane(config: ClipMenuBackup.config) {
+            BackupAdditionalSettingsView()
+        }
+        #expect(pane.id == "backup")
+        #expect(pane.title == "DragonKit.pane.backup")
+        #expect(pane.systemImage == "arrow.clockwise.circle")
+        #expect(ClipMenuBackup.config.contents.count == 3)
+        #expect(ClipMenuBackup.config.operations != nil)
+        #expect(ClipMenuBackup.config.folderPathKey == PreferenceKeys.backupFolderPath)
+        #expect(ClipMenuBackup.config.folderBookmarkKey == PreferenceKeys.backupFolderBookmark)
     }
+
 }
 
 // MARK: - Exclude-apps sheet

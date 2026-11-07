@@ -29,21 +29,25 @@ enum BackupFolder {
         return true
     }
 
-    /// Resolve the stored bookmark to a folder URL (refreshing it if stale), or nil
-    /// when no folder is configured / the bookmark can't be resolved.
+    /// Resolve the bookmark, then fall back to the shared pane's stored path.
     static func resolvedURL(defaults: UserDefaults = .standard) -> URL? {
-        guard let data = defaults.data(forKey: PreferenceKeys.backupFolderBookmark) else { return nil }
-        var stale = false
-        guard let url = try? URL(
-            resolvingBookmarkData: data, options: resolutionOptions,
-            relativeTo: nil, bookmarkDataIsStale: &stale)
-        else { return nil }
-        if stale { _ = set(url, defaults: defaults) }
-        return url
+        if let data = defaults.data(forKey: PreferenceKeys.backupFolderBookmark), !data.isEmpty {
+            var stale = false
+            if let url = try? URL(
+                resolvingBookmarkData: data, options: resolutionOptions,
+                relativeTo: nil, bookmarkDataIsStale: &stale) {
+                if stale { _ = set(url, defaults: defaults) }
+                return url
+            }
+        }
+        guard let path = defaults.string(forKey: PreferenceKeys.backupFolderPath), !path.isEmpty else {
+            return nil
+        }
+        return URL(fileURLWithPath: path, isDirectory: true)
     }
 
     static func isConfigured(defaults: UserDefaults = .standard) -> Bool {
-        defaults.data(forKey: PreferenceKeys.backupFolderBookmark) != nil
+        resolvedURL(defaults: defaults) != nil
     }
 
     static func displayPath(defaults: UserDefaults = .standard) -> String {

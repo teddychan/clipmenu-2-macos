@@ -112,9 +112,9 @@ final class BackupManager {
     /// the retention quota: a synced folder can already exceed it (another Mac wrote
     /// into it, or backups piled up while auto-backup was off), and pruning otherwise
     /// only happens after a new write. Best-effort — a failed prune still lists.
-    func listForUI() async throws -> [BackupVersionMeta] {
+    func listForUI(pruning: Bool = true) async throws -> [BackupVersionMeta] {
         let all = try await store.list()
-        let toPrune = Set(BackupRetention.recordsToPrune(all))
+        let toPrune = pruning ? Set(BackupRetention.recordsToPrune(all)) : []
         if !toPrune.isEmpty { try? await store.delete(recordNames: Array(toPrune)) }
         return all
             .filter { !toPrune.contains($0.recordName) }

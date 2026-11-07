@@ -9,7 +9,7 @@ enum WhatsNewConfig {
         WhatsNewContent(
             // Version omitted on purpose: it defaults to CFBundleShortVersionString
             // and the kit adds the "v". The pane tracks the current build's notes.
-            date: "2026-11-07",
+            date: "2026-11-08",
             summary: L("app.whatsNew.summary"),
             sections: [
                 ChangeSection(kind: .changed, entries: [

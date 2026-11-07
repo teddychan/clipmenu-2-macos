@@ -152,118 +152,37 @@ struct GeneralPreferencesView: View {
     }
 }
 
-// MARK: - Sync & Backup pane (folder backup + history export)
+// MARK: - App-specific backup options and history export
 
-/// Sync & backup preferences. Snippets and settings are backed up to a folder you
-/// choose; put that folder in Dropbox / iCloud Drive / Google Drive to sync across
-/// Macs. A separate section handles the one-shot clipboard-history text export.
-struct BackupPreferencesView: View {
+struct BackupAdditionalSettingsView: View {
     @AppStorage("exportHistoryAsSingleFile") private var exportAsSingleFile = true
     @AppStorage("tagOfSeparatorForExportHistoryToFile") private var separatorTag = 1
     @AppStorage(PreferenceKeys.automaticBackupEnabled) private var automaticBackup = true
 
-    @State private var folderPath: String = BackupFolder.displayPath()
-    @State private var status: String = ""
-    @State private var working = false
-    @State private var showRestore = false
-
-    private var backupConfigured: Bool { BackupFolder.isConfigured() }
-
     var body: some View {
-        Group {
-            DragonSection(LocalizedStringKey(L("Sync & Backup"))) {
-                LabeledContent(L("Backup folder")) {
-                    Button(folderPath.isEmpty ? L("Choose…") : L("Change…"), action: chooseFolder)
-                }
-                if !folderPath.isEmpty {
-                    Text(folderPath)
-                        .font(.caption).foregroundStyle(.secondary)
-                        .lineLimit(1).truncationMode(.middle)
-                }
-                Text(L("Snippets and settings are backed up to this folder (the newest 20 are kept). Put it in Dropbox, iCloud Drive, or Google Drive to sync across your Macs or set up a new Mac."))
-                    .font(.callout).foregroundStyle(.secondary)
-                Toggle(L("Back up automatically when quitting"), isOn: $automaticBackup)
-                HStack {
-                    Button(L("Back up now")) { Task { await backUpNow() } }
-                        .disabled(working || !backupConfigured)
-                    Button(L("Restore…")) { showRestore = true }
-                        .disabled(working || !backupConfigured)
-                    if working { ProgressView().controlSize(.small) }
-                }
-                if !status.isEmpty {
-                    Text(status).font(.callout).foregroundStyle(.secondary)
-                }
-            }
-
-            DragonSection(LocalizedStringKey(L("Clipboard History Export"))) {
-                Picker("", selection: $exportAsSingleFile) {
-                    Text(L("Single file")).tag(true)
-                    Text(L("Multiple files")).tag(false)
-                }
-                .labelsHidden()
-                Picker(L("separator:"), selection: $separatorTag) {
-                    Text(L("None")).tag(0)
-                    Text(L("New Line")).tag(1)
-                    Text(L("Carriage Return and New Line")).tag(2)
-                    Text(L("Carriage Return")).tag(3)
-                    Text(L("Tab")).tag(4)
-                    Text(L("Space")).tag(5)
-                }
-                .disabled(!exportAsSingleFile)
-                Button(L("Export…"), action: export)
-            }
+        DragonSection(LocalizedStringKey(L("Automatic"))) {
+            Toggle(L("Back up automatically when quitting"), isOn: $automaticBackup)
         }
-        .sheet(isPresented: $showRestore) {
-            if let manager = BackupScheduler.makeManager() {
-                RestoreVersionsView(manager: manager)
-            } else {
-                Text(L("Choose a backup folder first.")).padding()
+        .onAppear { ClipMenuBackup.registerDefaultFolderIfNeeded() }
+        DragonSection(LocalizedStringKey(L("Clipboard History Export"))) {
+            Picker("", selection: $exportAsSingleFile) {
+                Text(L("Single file")).tag(true)
+                Text(L("Multiple files")).tag(false)
             }
+            .labelsHidden()
+            Picker(L("separator:"), selection: $separatorTag) {
+                Text(L("None")).tag(0)
+                Text(L("New Line")).tag(1)
+                Text(L("Carriage Return and New Line")).tag(2)
+                Text(L("Carriage Return")).tag(3)
+                Text(L("Tab")).tag(4)
+                Text(L("Space")).tag(5)
+            }
+            .disabled(!exportAsSingleFile)
+            Button(L("Export…"), action: export)
         }
     }
 
-    /// Pick the backup folder, persist a (security-scoped) bookmark, and seed the
-    /// settings sidecar so the folder immediately holds current settings.
-    private func chooseFolder() {
-        let panel = NSOpenPanel()
-        panel.canChooseDirectories = true
-        panel.canChooseFiles = false
-        panel.canCreateDirectories = true
-        panel.allowsMultipleSelection = false
-        panel.prompt = L("Choose")
-        if let current = BackupFolder.resolvedURL() { panel.directoryURL = current }
-        guard panel.runModal() == .OK, let url = panel.url else { return }
-        _ = BackupFolder.set(url)
-        folderPath = BackupFolder.displayPath()
-        let scoped = url.startAccessingSecurityScopedResource()
-        SettingsSidecar.write(from: .standard, to: url.appending(path: SettingsSidecar.fileName))
-        if scoped { url.stopAccessingSecurityScopedResource() }
-    }
-
-    private func backUpNow() async {
-        working = true; defer { working = false }
-        guard let manager = BackupScheduler.makeManager() else {
-            status = L("Choose a backup folder first.")
-            return
-        }
-        do {
-            switch try await manager.backUpNow(kind: .manual) {
-            case .created: status = L("Backup saved.")
-            case .noChanges: status = L("No changes since the last backup.")
-            }
-            // Keep the settings sidecar current alongside the snippet version.
-            if let folder = BackupFolder.resolvedURL() {
-                let scoped = folder.startAccessingSecurityScopedResource()
-                SettingsSidecar.write(from: .standard, to: folder.appending(path: SettingsSidecar.fileName))
-                if scoped { folder.stopAccessingSecurityScopedResource() }
-            }
-        } catch {
-            status = L("Backup failed. Try again later.")
-        }
-    }
-
-    /// Export… (PrefsWindowController.m:482-499): save panel (single file) or
-    /// folder chooser (multiple files), then HistoryExport.
     private func export() {
         let context = AppStore.container.mainContext
         // Export the same bounded, visible history the menu shows — not every row
@@ -287,155 +206,6 @@ struct BackupPreferencesView: View {
             guard panel.runModal() == .OK, let dir = panel.url else { return }
             HistoryExport.writeMultipleFiles(
                 orderedClipStrings: clips.map(\.stringValue), toDirectory: dir)
-        }
-    }
-}
-
-/// Lists stored backup versions newest-first and restores the chosen one.
-struct RestoreVersionsView: View {
-    let manager: BackupManager
-    @Environment(\.dismiss) private var dismiss
-
-    @State private var versions: [BackupVersionMeta] = []
-    @State private var loading = true
-    @State private var restoring = false
-    @State private var selectedID: String?
-    @State private var error: String = ""
-    @State private var otherFiles = 0
-
-    private static let dateFormat: DateFormatter = {
-        let f = DateFormatter(); f.dateStyle = .medium; f.timeStyle = .short; return f
-    }()
-
-    private var selected: BackupVersionMeta? { versions.first { $0.id == selectedID } }
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(L("Restore from Backup")).font(.headline)
-
-            if restoring {
-                HStack { ProgressView().controlSize(.small); Text(L("Restoring…")) }
-            } else if loading {
-                ProgressView()
-            } else if versions.isEmpty && error.isEmpty {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(L("No backups yet.")).foregroundStyle(.secondary)
-                    if otherFiles > 0 {
-                        Text(String(format: L("Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)."), otherFiles))
-                            .font(.caption).foregroundStyle(.secondary)
-                    }
-                }
-            } else {
-                List(selection: $selectedID) {
-                    ForEach(versions) { v in
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(Self.dateFormat.string(from: v.effectiveDate))
-                            Text(versionDetail(v))
-                                .font(.caption).foregroundStyle(.secondary)
-                        }
-                        .tag(v.id)
-                    }
-                }
-                .frame(minHeight: 200)
-            }
-
-            if !error.isEmpty { Text(error).font(.callout).foregroundStyle(.red) }
-
-            HStack {
-                Spacer()
-                Button(L("Cancel")) { dismiss() }.disabled(restoring)
-                Button(L("Restore")) { confirmAndRestore() }
-                    .keyboardShortcut(.defaultAction)
-                    .disabled(selected == nil || restoring || newerThanApp(selected))
-            }
-        }
-        .padding(20)
-        .frame(width: 440)
-        .task { await load() }
-    }
-
-    /// Confirm with an AppKit alert before the destructive replace. SwiftUI's
-    /// `.confirmationDialog` does not reliably present from inside a `.sheet` on
-    /// macOS, so we use `NSAlert` — the confirmation pattern used elsewhere here.
-    private func confirmAndRestore() {
-        guard let v = selected else { return }
-        let alert = NSAlert()
-        alert.alertStyle = .warning
-        alert.messageText = L("Restore this backup?")
-        alert.informativeText = confirmMessage(v)
-        alert.addButton(withTitle: L("Restore"))
-        alert.addButton(withTitle: L("Cancel"))
-        NSApp.activate(ignoringOtherApps: true)
-        guard alert.runModal() == .alertFirstButtonReturn else { return }
-        Task { await restore() }
-    }
-
-    /// Detail shown in the restore confirmation: which version, and that the
-    /// current snippets are safely backed up before the destructive replace.
-    private func confirmMessage(_ v: BackupVersionMeta) -> String {
-        let when = Self.dateFormat.string(from: v.effectiveDate)
-        let detail = versionDetail(v)
-        return "\(when)\n\(detail)\n\n" + L("This replaces all your current snippets and folders. Your current snippets are backed up first.")
-    }
-
-    /// "Manual · Folders: 3 · Snippets: 12 · Mac". Each count sits inside its own
-    /// format string, so a language with several plural forms can word it count-neutrally.
-    private func versionDetail(_ v: BackupVersionMeta) -> String {
-        [kindLabel(v.kind),
-         String(format: L("Folders: %d"), v.folderCount),
-         String(format: L("Snippets: %d"), v.snippetCount),
-         v.deviceName].joined(separator: " · ")
-    }
-
-    private func kindLabel(_ kind: BackupKind) -> String {
-        switch kind {
-        case .auto: return L("Automatic")
-        case .manual: return L("Manual")
-        case .preRestore: return L("Before restore")
-        }
-    }
-
-    private func newerThanApp(_ v: BackupVersionMeta?) -> Bool {
-        guard let v else { return false }
-        return v.schemaVersion > SnippetSnapshot.currentSchemaVersion
-    }
-
-    private func load() async {
-        loading = true; defer { loading = false }
-        do {
-            versions = try await manager.listForUI()
-            if versions.isEmpty { otherFiles = await manager.otherFolderItemCount() }
-        }
-        catch _ { error = L("Couldn't load backups from the folder.") }
-    }
-
-    private func restore() async {
-        guard let v = selected else { return }
-        restoring = true; defer { restoring = false }
-        do { try await manager.restore(v); dismiss() }
-        catch let e as SyncBackupError {
-            switch e {
-            case .preRestoreFailed:
-                error = L("Couldn't save a safety backup, so the restore was cancelled.")
-            case .unsupportedSchemaVersion:
-                error = L("This version was made on a newer app version and can't be restored.")
-            case .validationFailed:
-                error = L("Restore failed. Your current data was not changed.")
-            }
-        } catch _ {
-            error = L("Restore failed. Your current data was not changed.")
-        }
-    }
-}
-
-// MARK: - Sync & Backup pane (combined tab)
-
-/// The single "Sync & Backup" Settings tab: folder-based snippet + settings backup
-/// and restore, plus the one-shot clipboard-history export, in one grouped `Form`.
-struct CloudBackupPreferencesView: View {
-    var body: some View {
-        DragonForm {
-            BackupPreferencesView()
         }
     }
 }
@@ -548,12 +318,6 @@ struct GeneralPane: SettingsPane {
     var paneBody: some View { GeneralPreferencesView() }
 }
 
-struct SyncBackupPane: SettingsPane {
-    let id = "syncBackup"
-    let title = "Sync & Backup"
-    let systemImage = "externaldrive.badge.timemachine"
-    var paneBody: some View { CloudBackupPreferencesView() }
-}
 
 struct MenuPane: SettingsPane {
     let id = "menu"

@@ -311,5 +311,11 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "La fenêtre Lire les informations du Finder affiche désormais le copyright de ClipMenu, la même ligne que celle du panneau À propos.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Les sauvegardes conservent désormais vos réglages et actions personnalisées.";
-"app.whatsNew.changed1" = "Restaurez une sauvegarde pour retrouver ses réglages, dont la langue, les raccourcis et les actions personnalisées. Modifier un réglage crée désormais une nouvelle sauvegarde.";
+"app.whatsNew.summary" = "Sauvegarde et restauration utilise désormais le panneau partagé de DragonKit.";
+"app.whatsNew.changed1" = "Consultez le contenu des sauvegardes, parcourez la liste, affichez le dossier dans le Finder et restaurez ou supprimez chaque sauvegarde. Les sauvegardes existantes et l’export de l’historique restent disponibles.";
+
+"All settings, including language and shortcuts" = "Tous les réglages, dont la langue et les raccourcis";
+"Snippets and folders" = "Extraits et dossiers";
+"Custom action choices" = "Choix des actions personnalisées";
+
+"A backup operation is already running. Please wait for it to finish." = "Une opération de sauvegarde est déjà en cours. Attendez la fin de cette opération.";

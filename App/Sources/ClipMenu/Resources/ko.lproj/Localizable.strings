@@ -311,5 +311,11 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder의 정보 가져오기 창에 정보 패널과 같은 ClipMenu의 저작권 표시가 표시됩니다.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "이제 백업에 설정과 사용자 지정 동작이 저장됩니다.";
-"app.whatsNew.changed1" = "백업을 복원하면 언어, 단축키, 사용자 지정 동작을 포함한 당시 설정이 복원됩니다. 설정을 변경해도 새 백업이 생성됩니다.";
+"app.whatsNew.summary" = "백업 및 복원에 DragonKit 공통 패널을 사용합니다.";
+"app.whatsNew.changed1" = "저장되는 내용을 확인하고 패널에서 백업을 찾아 복원하거나 삭제하고 Finder에서 폴더를 열 수 있습니다. 기존 백업과 클립보드 기록 내보내기도 계속 사용할 수 있습니다.";
+
+"All settings, including language and shortcuts" = "언어 및 단축키를 포함한 모든 설정";
+"Snippets and folders" = "스니펫 및 폴더";
+"Custom action choices" = "사용자 지정 동작 선택";
+
+"A backup operation is already running. Please wait for it to finish." = "백업 작업이 진행 중입니다. 완료될 때까지 기다려 주세요.";

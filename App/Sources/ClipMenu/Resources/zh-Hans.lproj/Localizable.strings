@@ -311,5 +311,11 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "访达的“显示简介”现在会显示 ClipMenu 的版权声明，与关于面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "备份现在会保存你的设置和自定义操作。";
-"app.whatsNew.changed1" = "恢复备份时会恢复当时的设置，包括语言、快捷键和自定义操作。更改设置后也会创建新备份。";
+"app.whatsNew.summary" = "备份与恢复现在使用 DragonKit 的共享面板。";
+"app.whatsNew.changed1" = "查看备份保存的内容，在面板中浏览备份，在访达中显示文件夹，并逐个恢复或删除备份。现有备份和剪贴板历史导出仍然可用。";
+
+"All settings, including language and shortcuts" = "所有设置，包括语言和快捷键";
+"Snippets and folders" = "片段和文件夹";
+"Custom action choices" = "自定义操作选项";
+
+"A backup operation is already running. Please wait for it to finish." = "备份操作正在进行。请等待操作完成。";

@@ -16,7 +16,7 @@ ClipMenu 2: a macOS clipboard-history menu-bar app, built as a SwiftPM package u
 
 - Shared behavior (settings shell, About, What's New, Permissions, Uninstall, Updates, localization, design primitives) comes from the `dragon-kit` package at a version tag. Never fork or vendor it into the app: change dragon-kit, tag a release there, and raise the requirement in `App/Package.swift`.
 - Set `LocalizationManager.shared.appStringsBundle` at launch before any `L()` call.
-- Deliberate deviations, don't "fix" them: folder backup and the Sync & Backup pane stay app-owned in `Sources/ClipMenu/Premium/` (DragonKit's backup only snapshots a UserDefaults suite), and settings stay flat `@AppStorage` rather than `DragonSettingsStore`.
+- Backup uses DragonKit's `BackupSettingsPane`. ClipMenu supplies its snippet, settings and action payload operations through `ClipMenuBackup`; preserve existing `.clipbackup` files and pre-restore safety snapshots. Automatic backup and clipboard-history export controls stay app-owned. Settings stay flat `@AppStorage` rather than `DragonSettingsStore`.
 - The support link in `App/Sources/ClipMenu/AboutConfig.swift` names the pre-rename repo `teddychan/clipmenu-2` on purpose. DragonKit CONFORMANCE §R15 requires the support repo to equal the page slug, and GitHub redirects the old URL, so leave it until DragonKit accepts the `-macos` suffix.
 
 ### Sync and backup

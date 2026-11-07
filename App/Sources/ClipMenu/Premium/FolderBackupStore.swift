@@ -115,9 +115,9 @@ struct FolderBackupStore: BackupStore {
     }
 
     func delete(recordNames: [String]) async throws {
-        withAccess {
+        try withAccess {
             for name in recordNames {
-                try? FileManager.default.removeItem(at: folder.appending(path: name))
+                try FileManager.default.removeItem(at: folder.appending(path: name))
             }
         }
     }
