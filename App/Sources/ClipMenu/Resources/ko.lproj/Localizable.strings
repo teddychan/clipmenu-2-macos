@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder의 정보 가져오기 창에 정보 패널과 같은 ClipMenu의 저작권 표시가 표시됩니다.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "빈 복사본 때문에 기록 맨 위에 빈 행이 남지 않습니다.";
-"app.whatsNew.fixed1" = "일부 앱은 아무것도 담기지 않은 복사본을 클립보드에 올립니다. ClipMenu 2는 이를 빈 항목으로 저장했고, 이 항목은 빈 행으로 표시되며 계속 맨 위로 올라왔습니다. 이제 ClipMenu 2는 이런 복사본을 건너뛰고, 기록에 이미 있는 빈 항목을 삭제합니다.";
+"app.whatsNew.summary" = "유지 보수 릴리스입니다. ClipMenu 2는 이전과 똑같이 작동합니다.";
+"app.whatsNew.changed1" = "ClipMenu 2가 이제 DragonKit 4.4.0을 사용합니다. DragonKit은 설정, 정보, 제거 창을 이루는 공용 도구 모음입니다. 정보 패널에 새 버전이 표시되는 것 외에는 달라지는 것이 없습니다.";

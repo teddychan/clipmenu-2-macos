@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder 的「顯示簡介」現在會顯示 ClipMenu 的版權聲明，與關於面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "空白的複製內容不會再在歷史頂部留下空行。";
-"app.whatsNew.fixed1" = "有些 App 會把不含任何內容的複製放到剪貼板。ClipMenu 2 曾把它存成空白項目，顯示為一行空白，並且反覆回到頂部。現在 ClipMenu 2 會略過這類複製，並刪除歷史中已有的空白項目。";
+"app.whatsNew.summary" = "這是一次維護更新。ClipMenu 2 的使用方式與之前相同。";
+"app.whatsNew.changed1" = "ClipMenu 2 現在使用 DragonKit 4.4.0，即設定、關於和解除安裝視窗所用的共用工具套件。「關於」面板會顯示新版本，其他一切不變。";

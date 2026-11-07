@@ -10,12 +10,12 @@ enum WhatsNewConfig {
             // Version omitted on purpose: it defaults to CFBundleShortVersionString
             // and the kit adds the "v". The pane tracks the current build's notes.
             date: "2026-11-07",
-            // Only what a shipped copy can observe: a copy that holds no data no longer
-            // leaves a blank row at the top of history.
+            // Maintenance only: DragonKit 4.3.0 → 4.4.0. The one thing a user can see is About's
+            // "Built with · DragonKit v4.4.0" row, so the pane says that and claims nothing more.
             summary: L("app.whatsNew.summary"),
             sections: [
-                ChangeSection(kind: .fixed, entries: [
-                    L("app.whatsNew.fixed1"),
+                ChangeSection(kind: .changed, entries: [
+                    L("app.whatsNew.changed1"),
                 ]),
             ]
         )
