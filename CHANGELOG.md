@@ -13,7 +13,7 @@ A copy that holds nothing no longer leaves a blank row at the top of history.
   data for either. ClipMenu 2 saved it as a clip with nothing in it, shown as a blank `1.` row, and
   since every such copy looks the same, each new one moved that row back to the top.
   `PasteboardReader.snapshot()` now skips a copy with no data, and ClipMenu 2 deletes the empty
-  clips already in history when it starts (#125).
+  clips already in history when it starts (#126).
 
 ## 2.22.4 (2026-11-07)
 
