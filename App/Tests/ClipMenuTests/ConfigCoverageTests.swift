@@ -111,12 +111,12 @@ import DragonKit
 
     @Test func contentHasDateAndSummary() {
         let content = WhatsNewConfig.content
-        #expect(content.date == "2026-11-05")
+        #expect(content.date == "2026-11-07")
         #expect(!content.summary.isEmpty)
     }
 
-    /// 2.22.3's notes: a password copied while ClipMenu reads the clipboard no longer reaches
-    /// history, as one `.fixed` entry.
+    /// 2.22.4's notes: history rows copied as RTF only, or as a link only, show their text, as
+    /// one `.fixed` entry.
     ///
     /// Pinned per release alongside the WhatsNewConfig copy itself — the section shape IS the claim,
     /// so updating the notes has to update this, which is the point. The release gate checks that

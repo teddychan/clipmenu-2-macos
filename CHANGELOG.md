@@ -4,6 +4,16 @@ Changes in each version of ClipMenu. Each entry is also that version's tag messa
 of its GitHub Release. The in-app What's New pane shows a separate, translated text from
 `App/Sources/ClipMenu/WhatsNewConfig.swift`.
 
+## 2.22.4 (2026-11-07)
+
+History rows that showed only a number now show their text.
+
+### Fixed
+- **Blank history rows.** Some apps copy text only as RTF, and some copy a link only as a URL,
+  with no plain text. ClipMenu 2 saved and pasted those clips, but the menu built each title from
+  the plain text alone, so the row showed just its number (`4.`). The title and tool tip now fall
+  back to the RTF's text, then to the URL, and a file URL shows as its path (#123).
+
 ## 2.22.3 (2026-11-05)
 
 A password that a password manager copies while ClipMenu 2 is reading the clipboard no longer
