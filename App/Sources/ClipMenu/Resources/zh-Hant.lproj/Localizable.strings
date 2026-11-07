@@ -196,7 +196,7 @@
 "No backups yet." = "尚無備份。";
 "Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "此資料夾中有 %d 個項目不是 ClipMenu 2 備份（例如，來自舊版應用程式的匯出檔案）。";
 "Restore this backup?" = "要還原此備份嗎？";
-"This replaces all your current snippets and folders. Your current snippets are backed up first." = "這會取代您目前所有的片段與資料夾。您目前的片段會先備份。";
+"This replaces all your current snippets and folders. Your current snippets are backed up first." = "這會取代目前的片段和資料夾，以及此備份中儲存的設定和自訂動作。還原前會先備份目前狀態。";
 "Folders: %d" = "%d 個資料夾";
 "Snippets: %d" = "%d 個片段";
 "Automatic" = "自動";
@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder 的「顯示簡介」現在會顯示 ClipMenu 的版權聲明，與關於面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "這是一次維護更新。ClipMenu 2 的使用方式與之前相同。";
-"app.whatsNew.changed1" = "ClipMenu 2 現在使用 DragonKit 4.4.0，即設定、關於和解除安裝視窗所用的共用工具套件。「關於」面板會顯示新版本，其他一切不變。";
+"app.whatsNew.summary" = "備份現在會儲存你的設定和自訂動作。";
+"app.whatsNew.changed1" = "還原備份時會還原當時的設定，包括語言、快捷鍵和自訂動作。變更設定後也會建立新備份。";

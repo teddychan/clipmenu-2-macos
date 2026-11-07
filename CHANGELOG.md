@@ -4,6 +4,10 @@ Changes in each version of ClipMenu. Each entry is also that version's tag messa
 of its GitHub Release. The in-app What's New pane shows a separate, translated text from
 `App/Sources/ClipMenu/WhatsNewConfig.swift`.
 
+## 2.23.1 (2026-11-07)
+
+Backups now save your settings and custom actions with your snippets. Changing a setting creates a new backup, and restoring a backup brings back the settings saved with it, including your language.
+
 ## 2.23.0 (2026-11-07)
 
 A maintenance release. ClipMenu 2 works the same as before.

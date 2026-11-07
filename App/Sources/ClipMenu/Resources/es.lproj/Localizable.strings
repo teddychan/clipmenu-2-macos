@@ -196,7 +196,7 @@
 "No backups yet." = "Aún no hay copias.";
 "Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "Elementos de esta carpeta que no son copias de seguridad de ClipMenu 2: %d (por ejemplo, exportaciones de una app anterior).";
 "Restore this backup?" = "¿Restaurar esta copia?";
-"This replaces all your current snippets and folders. Your current snippets are backed up first." = "Esto reemplaza todos tus fragmentos y carpetas actuales. Tus fragmentos actuales se respaldan primero.";
+"This replaces all your current snippets and folders. Your current snippets are backed up first." = "Se reemplazan los fragmentos y carpetas actuales, junto con los ajustes y acciones personalizados guardados en esta copia. Primero se guarda una copia del estado actual.";
 "Folders: %d" = "Carpetas: %d";
 "Snippets: %d" = "Fragmentos: %d";
 "Automatic" = "Automática";
@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "El panel Obtener información del Finder ahora muestra el copyright de ClipMenu, la misma línea que muestra el panel Acerca de.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Una versión de mantenimiento. ClipMenu 2 funciona igual que antes.";
-"app.whatsNew.changed1" = "ClipMenu 2 ahora usa DragonKit 4.4.0, el conjunto de herramientas compartido detrás de sus ventanas de Ajustes, Acerca de y Desinstalar. El panel Acerca de muestra la nueva versión y no cambia nada más.";
+"app.whatsNew.summary" = "Las copias de seguridad ahora guardan tus ajustes y acciones personalizadas.";
+"app.whatsNew.changed1" = "Restaura una copia para recuperar sus ajustes, incluidos el idioma, los atajos y las acciones personalizadas. Los cambios en los ajustes ahora crean una nueva copia.";

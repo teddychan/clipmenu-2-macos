@@ -196,7 +196,7 @@
 "No backups yet." = "まだバックアップがありません。";
 "Items in this folder that aren't ClipMenu 2 backups: %d (for example, exports from an older app)." = "このフォルダ内の %d 個の項目は ClipMenu 2 のバックアップではありません（古いアプリからの書き出しなど）。";
 "Restore this backup?" = "このバックアップを復元しますか？";
-"This replaces all your current snippets and folders. Your current snippets are backed up first." = "現在のすべてのスニペットとフォルダを置き換えます。現在のスニペットは先にバックアップされます。";
+"This replaces all your current snippets and folders. Your current snippets are backed up first." = "現在のスニペットとフォルダ、およびこのバックアップに保存された設定とカスタムアクションを置き換えます。復元前に現在の状態をバックアップします。";
 "Folders: %d" = "%d 個のフォルダ";
 "Snippets: %d" = "%d 個のスニペット";
 "Automatic" = "自動";
@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder の「情報を見る」に、「情報」パネルと同じ ClipMenu の著作権表示が表示されるようになりました。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "メンテナンスリリースです。ClipMenu 2 の動作はこれまでと変わりません。";
-"app.whatsNew.changed1" = "ClipMenu 2 は DragonKit 4.4.0 を使うようになりました。DragonKit は設定、情報、アンインストールの各ウインドウを支える共通ツールキットです。情報パネルに新しいバージョンが表示されるほかは、何も変わりません。";
+"app.whatsNew.summary" = "設定とカスタムアクションがバックアップに保存されるようになりました。";
+"app.whatsNew.changed1" = "バックアップを復元すると、言語、ショートカット、カスタムアクションを含む保存時の設定が戻ります。設定の変更でも新しいバックアップが作成されます。";

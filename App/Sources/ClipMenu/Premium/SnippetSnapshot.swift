@@ -7,13 +7,15 @@ import CryptoKit
 /// `ModelContext`, encoded canonically for a stable content hash, stored as a
 /// CloudKit asset, and applied back to a `ModelContext` on restore.
 struct SnippetSnapshot: Codable, Sendable, Equatable {
-    static let currentSchemaVersion = 1
+    static let currentSchemaVersion = 2
 
     var schemaVersion: Int
     var folders: [FolderDTO]
     /// Snippets with no folder (defensive: keeps "no data lost" true even for
     /// folder-less snippets that import paths can create).
     var orphanSnippets: [SnippetDTO]
+    var settings: [String: Data]? = nil
+    var actions: [ActionNode]? = nil
 
     struct FolderDTO: Codable, Sendable, Equatable {
         var title: String
