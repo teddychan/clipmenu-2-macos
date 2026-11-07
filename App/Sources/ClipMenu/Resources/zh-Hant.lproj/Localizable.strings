@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder 的「顯示簡介」現在會顯示 ClipMenu 的版權聲明，與關於面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "以富文本或連結形式複製的歷史項目，現在會在選單中顯示文字。";
-"app.whatsNew.fixed1" = "有些 App 只以富文本形式複製文字，有些 App 複製連結時不帶純文字。ClipMenu 2 能儲存並貼上這些內容，但選單中只顯示編號。現在選單會顯示它們的文字或連結地址。";
+"app.whatsNew.summary" = "空白的複製內容不會再在歷史頂部留下空行。";
+"app.whatsNew.fixed1" = "有些 App 會把不含任何內容的複製放到剪貼板。ClipMenu 2 曾把它存成空白項目，顯示為一行空白，並且反覆回到頂部。現在 ClipMenu 2 會略過這類複製，並刪除歷史中已有的空白項目。";

@@ -158,6 +158,16 @@ extension PasteboardSerialized {
             #expect(PasteboardReader.snapshot() == nil)
         }
 
+        // Regression: an app can declare String and URL and then supply no data for
+        // either. That copy used to become an empty clip, a blank "N." row, and since
+        // every such copy hashes the same, each one moved that row back to the top.
+        @Test func snapshotReturnsNilWhenDeclaredTypesHoldNoData() {
+            let restore = neutralizeDefaults(); defer { restore() }
+            let pb = NSPasteboard.general
+            pb.declareTypes([.string, .URL], owner: nil) // declared, never written
+            #expect(PasteboardReader.snapshot() == nil)
+        }
+
         // MARK: pure helpers
 
         @Test func clipTypeNamesCoverAllSupportedTypesAndDropOthers() {

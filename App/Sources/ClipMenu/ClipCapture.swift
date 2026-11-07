@@ -118,6 +118,12 @@ enum PasteboardReader {
                 break
             }
         }
+        // An app can declare types and then supply no data for any of them. Store
+        // nothing then: every such copy hashes alike, so one blank clip would keep
+        // returning to the top of history.
+        guard stringValue != nil || rtfData != nil || pdfData != nil
+                || filenames?.isEmpty == false || urlString != nil || imageData != nil
+        else { return nil }
 
         let hash = stableContentHash(
             typeNames: names, stringValue: stringValue, rtfData: rtfData,
@@ -285,6 +291,22 @@ actor ClipStore {
             try? context.save()
             // `context` is released here, freeing the faulted full image.
         }
+    }
+
+    /// Delete clips that hold no data at all, saved before snapshot() skipped such
+    /// copies; the menu showed each as a blank "N." row. Runs at every launch and
+    /// finds nothing once they are gone.
+    func removeEmptyClips() {
+        let descriptor = FetchDescriptor<ClipRecord>(predicate: #Predicate {
+            $0.stringValue == nil && $0.urlString == nil && $0.image == nil
+        })
+        guard let candidates = try? modelContext.fetch(descriptor) else { return }
+        let empty = candidates.filter {
+            ($0.filenames?.isEmpty ?? true) && $0.rtfData == nil && $0.pdfData == nil
+        }
+        guard !empty.isEmpty else { return }
+        for clip in empty { modelContext.delete(clip) }
+        try? modelContext.save()
     }
 
     /// Drop oldest clips beyond maxHistorySize (ClipsController.m:795-813). Runs on

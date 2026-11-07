@@ -184,6 +184,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         // menu shows a picture without faulting the full image
         // (design-invariants.md — Images and memory).
         Task { await store.backfillThumbnails() }
+        Task { await store.removeEmptyClips() }
 
         // An Edit menu so window-level Undo/Redo (and standard text editing)
         // work in the editor/settings windows (§G undo, row 138). LSUIElement

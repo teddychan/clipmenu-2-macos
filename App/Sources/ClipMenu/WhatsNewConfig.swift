@@ -10,8 +10,8 @@ enum WhatsNewConfig {
             // Version omitted on purpose: it defaults to CFBundleShortVersionString
             // and the kit adds the "v". The pane tracks the current build's notes.
             date: "2026-11-07",
-            // Only what a shipped copy can observe: history rows copied as RTF only, or as
-            // a link only, show their text instead of just a number.
+            // Only what a shipped copy can observe: a copy that holds no data no longer
+            // leaves a blank row at the top of history.
             summary: L("app.whatsNew.summary"),
             sections: [
                 ChangeSection(kind: .fixed, entries: [

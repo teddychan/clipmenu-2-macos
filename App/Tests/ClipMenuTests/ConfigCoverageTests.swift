@@ -115,7 +115,7 @@ import DragonKit
         #expect(!content.summary.isEmpty)
     }
 
-    /// 2.22.4's notes: history rows copied as RTF only, or as a link only, show their text, as
+    /// 2.22.5's notes: a copy that holds no data no longer leaves a blank row in history, as
     /// one `.fixed` entry.
     ///
     /// Pinned per release alongside the WhatsNewConfig copy itself — the section shape IS the claim,
