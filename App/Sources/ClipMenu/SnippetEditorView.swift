@@ -65,7 +65,7 @@ struct SnippetEditorView: View {
             // An unwritable store is the one failure the three columns cannot show
             // by themselves: they render the in-memory ModelContext, so the edit
             // still *looks* applied. One strip spanning the whole editor reports it
-            // — the inline-error pattern RestoreVersionsView already uses — and it
+            // and it
             // stays up until a save succeeds. See `save()` for why not an alert.
             if saveFailed {
                 Divider()

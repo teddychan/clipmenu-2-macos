@@ -311,5 +311,11 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder 的「顯示簡介」現在會顯示 ClipMenu 的版權聲明，與關於面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "備份現在會儲存你的設定和自訂動作。";
-"app.whatsNew.changed1" = "還原備份時會還原當時的設定，包括語言、快捷鍵和自訂動作。變更設定後也會建立新備份。";
+"app.whatsNew.summary" = "備份與還原現在使用 DragonKit 的共用面板。";
+"app.whatsNew.changed1" = "查看備份儲存的內容，在面板中瀏覽備份，在 Finder 中顯示資料夾，並逐一還原或刪除備份。現有備份和剪貼簿歷史匯出仍然可用。";
+
+"All settings, including language and shortcuts" = "所有設定，包括語言和快捷鍵";
+"Snippets and folders" = "片段和資料夾";
+"Custom action choices" = "自訂動作選項";
+
+"A backup operation is already running. Please wait for it to finish." = "備份操作正在進行。請等待操作完成。";

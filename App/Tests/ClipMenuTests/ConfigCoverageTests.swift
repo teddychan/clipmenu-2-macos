@@ -111,12 +111,11 @@ import DragonKit
 
     @Test func contentHasDateAndSummary() {
         let content = WhatsNewConfig.content
-        #expect(content.date == "2026-11-07")
+        #expect(content.date == "2026-11-08")
         #expect(!content.summary.isEmpty)
     }
 
-    /// 2.23.0's notes: a maintenance release that moves DragonKit to 4.4.0, as one `.changed`
-    /// entry.
+    /// The shared backup pane is described by one `.changed` entry.
     ///
     /// Pinned per release alongside the WhatsNewConfig copy itself — the section shape IS the claim,
     /// so updating the notes has to update this, which is the point. The release gate checks that

@@ -33,7 +33,8 @@ final class SettingsWindowController: NSObject {
         }
 
         init() {
-            paneID = UserDefaults.standard.string(forKey: PreferenceKeys.settingsSelectedTab) ?? "general"
+            let saved = UserDefaults.standard.string(forKey: PreferenceKeys.settingsSelectedTab) ?? "general"
+            paneID = ClipMenuBackup.migratedPaneID(saved)
         }
     }
 
@@ -93,7 +94,9 @@ final class SettingsWindowController: NSObject {
             panes.append(AnySettingsPane(PermissionsSettingsPane(
                 permissions: [.accessibility(isRequired: false)])))
         }
-        panes.append(AnySettingsPane(SyncBackupPane()))
+        panes.append(AnySettingsPane(BackupSettingsPane(config: ClipMenuBackup.config) {
+            BackupAdditionalSettingsView()
+        }))
         panes.append(AnySettingsPane(WhatsNewSettingsPane(content: WhatsNewConfig.content)))
         #if SPARKLE
         // Present in the Debug build too, so the sidebar matches the release build

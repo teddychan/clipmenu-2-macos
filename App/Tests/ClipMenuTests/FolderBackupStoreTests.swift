@@ -56,6 +56,16 @@ import Foundation
         #expect(remaining.first?.recordName == b.recordName)
     }
 
+    @Test func deleteReportsFileRemovalFailures() async throws {
+        let folder = tempFolder()
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let store = FolderBackupStore(folder: folder)
+        try await store.ensureZone()
+        await #expect(throws: CocoaError.self) {
+            try await store.delete(recordNames: ["missing.clipbackup"])
+        }
+    }
+
     @Test func listIgnoresNonBackupFiles() async throws {
         let folder = tempFolder()
         defer { try? FileManager.default.removeItem(at: folder) }
