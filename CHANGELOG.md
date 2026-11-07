@@ -4,6 +4,17 @@ Changes in each version of ClipMenu. Each entry is also that version's tag messa
 of its GitHub Release. The in-app What's New pane shows a separate, translated text from
 `App/Sources/ClipMenu/WhatsNewConfig.swift`.
 
+## 2.23.0 (2026-11-07)
+
+A maintenance release. ClipMenu 2 works the same as before.
+
+### Internal
+- **DragonKit 4.3.0 → 4.4.0.** About now reads "Built with · DragonKit v4.4.0", and conformance
+  rule §R10 passes again. DragonKit's Uninstall now always deletes the `<bundle id>.settings`
+  defaults suite. ClipMenu 2 keeps its settings in its standard defaults domain and has no such
+  suite, so Uninstall deletes the same things as before. The kit's new `BackupConfig(contents:)`
+  list isn't used, because ClipMenu 2 keeps its own folder backup.
+
 ## 2.22.5 (2026-11-07)
 
 A copy that holds nothing no longer leaves a blank row at the top of history.

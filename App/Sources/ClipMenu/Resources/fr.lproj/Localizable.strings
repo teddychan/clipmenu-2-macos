@@ -311,5 +311,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "La fenêtre Lire les informations du Finder affiche désormais le copyright de ClipMenu, la même ligne que celle du panneau À propos.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Les copies vides ne laissent plus de ligne vide en haut de l’historique.";
-"app.whatsNew.fixed1" = "Certaines apps placent dans le presse-papiers une copie qui ne contient rien. ClipMenu 2 l’enregistrait comme un élément vide, qui apparaissait comme une ligne vide et revenait sans cesse en haut. ClipMenu 2 ignore désormais ces copies et supprime les éléments vides déjà présents dans votre historique.";
+"app.whatsNew.summary" = "Une version de maintenance. ClipMenu 2 fonctionne comme avant.";
+"app.whatsNew.changed1" = "ClipMenu 2 utilise désormais DragonKit 4.4.0, la boîte à outils partagée derrière ses fenêtres Réglages, À propos et Désinstaller. Le panneau À propos affiche la nouvelle version, et rien d’autre ne change.";

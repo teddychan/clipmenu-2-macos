@@ -300,5 +300,5 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Empty copies no longer leave a blank row at the top of your history.";
-"app.whatsNew.fixed1" = "Some apps put a copy on the clipboard that holds nothing. ClipMenu 2 saved it as an empty item, which showed as a blank row and kept moving back to the top. ClipMenu 2 now skips these copies and removes the empty items already in your history.";
+"app.whatsNew.summary" = "A maintenance release. ClipMenu 2 works the same as before.";
+"app.whatsNew.changed1" = "ClipMenu 2 now uses DragonKit 4.4.0, the shared toolkit behind its Settings, About and Uninstall windows. The About pane shows the new version, and nothing else changes.";
