@@ -580,10 +580,10 @@ final class MainMenuController: NSObject, NSMenuDelegate {
 
     /// Clip tool tip: the full string truncated to maxLengthOfToolTip (default
     /// 200), only when showToolTipOnMenuItem (default YES) — MenuController.m:795-802.
-    /// Non-string clips (no stringValue) get no tip, as in legacy.
+    /// Clips with no text (images, PDFs, files) get no tip, as in legacy.
     private func clipToolTip(_ clip: ClipRecord) -> String? {
         guard menuPrefs.showToolTips,
-              let string = clip.stringValue else { return nil }
+              let string = Self.clipText(clip) else { return nil }
         return String(string.prefix(menuPrefs.maxToolTipLength))
     }
 
@@ -712,13 +712,30 @@ final class MainMenuController: NSObject, NSMenuDelegate {
     /// Menu title for a clip: trimmed first line, or a type placeholder
     /// (MenuController.m:810-826).
     private func clipMenuTitle(_ clip: ClipRecord) -> String {
-        let base = trimTitle(clip.stringValue)
         switch clip.typeIdentifiers.first {
         case "TIFF": return L("(Image)")
         case "PDF":  return L("(PDF)")
-        case "Filenames": return base.isEmpty ? L("(Filenames)") : base
-        default: return base
+        case "Filenames":
+            let base = trimTitle(clip.stringValue)
+            return base.isEmpty ? L("(Filenames)") : base
+        default: return trimTitle(Self.clipText(clip))
         }
+    }
+
+    /// The text a clip shows in its title and tool tip: its plain text, else the
+    /// text inside an RTF/RTFD-only copy, else a URL-only copy's address (a file
+    /// URL as its path). Without the fallbacks those rows showed only "N.".
+    static func clipText(_ clip: ClipRecord) -> String? {
+        if let string = clip.stringValue { return string }
+        if let data = clip.rtfData {
+            let text = clip.typeIdentifiers.contains("RTFD")
+                ? NSAttributedString(rtfd: data, documentAttributes: nil)?.string
+                : NSAttributedString(rtf: data, documentAttributes: nil)?.string
+            if let text { return text }
+        }
+        guard let urlString = clip.urlString else { return nil }
+        if let url = URL(string: urlString), url.isFileURL { return url.path }
+        return urlString
     }
 
     /// First line, whitespace-stripped, truncated with "..." to
