@@ -311,8 +311,8 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder の「情報を見る」に、「情報」パネルと同じ ClipMenu の著作権表示が表示されるようになりました。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "バックアップと復元に DragonKit の共通パネルを使うようになりました。";
-"app.whatsNew.changed1" = "保存内容の確認、バックアップ一覧の表示、Finder でのフォルダ表示、各バックアップの復元や削除ができます。既存のバックアップと履歴の書き出しも引き続き利用できます。";
+"app.whatsNew.summary" = "メンテナンスアップデート。";
+"app.whatsNew.changed1" = "設定とソフトウェアアップデートで使う共通コンポーネントを更新しました。";
 
 "All settings, including language and shortcuts" = "言語とショートカットを含むすべての設定";
 "Snippets and folders" = "スニペットとフォルダ";

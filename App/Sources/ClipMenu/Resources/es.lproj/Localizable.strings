@@ -311,8 +311,8 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "El panel Obtener información del Finder ahora muestra el copyright de ClipMenu, la misma línea que muestra el panel Acerca de.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Copia y restauración ahora usa el panel compartido de DragonKit.";
-"app.whatsNew.changed1" = "Consulta qué guarda una copia, explora las copias en el panel, muestra la carpeta en Finder y restaura o elimina cada copia. Las copias existentes y la exportación del historial siguen disponibles.";
+"app.whatsNew.summary" = "Actualización de mantenimiento.";
+"app.whatsNew.changed1" = "Se actualizaron los componentes compartidos de Ajustes y las actualizaciones de software.";
 
 "All settings, including language and shortcuts" = "Todos los ajustes, incluidos el idioma y los atajos";
 "Snippets and folders" = "Fragmentos y carpetas";
