@@ -311,8 +311,8 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "访达的“显示简介”现在会显示 ClipMenu 的版权声明，与关于面板中的一行相同。";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "维护更新。";
-"app.whatsNew.changed1" = "更新了设置和软件更新使用的共享组件。";
+"app.whatsNew.summary" = "还原的语言设置会立即生效。";
+"app.whatsNew.fixed1" = "还原设置备份后，无需重新启动 ClipMenu，即可更新应用语言。";
 
 "All settings, including language and shortcuts" = "所有设置，包括语言和快捷键";
 "Snippets and folders" = "片段和文件夹";

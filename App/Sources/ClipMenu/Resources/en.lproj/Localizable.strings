@@ -300,8 +300,8 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Maintenance update.";
-"app.whatsNew.changed1" = "Updated the shared components used by Settings and software updates.";
+"app.whatsNew.summary" = "Restored language choices apply immediately.";
+"app.whatsNew.fixed1" = "Restoring a settings backup updates the app language without restarting ClipMenu.";
 
 "All settings, including language and shortcuts" = "All settings, including language and shortcuts";
 "Snippets and folders" = "Snippets and folders";
