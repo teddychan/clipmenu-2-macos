@@ -57,11 +57,16 @@ jobs:
       # because passing whats_new_path to v5 fails at startup (v5 does not define the input) and
       # omitting it on v6 fails the gate.
       #
-      # ClipMenu's What's New entries are `L("An English sentence.")` — the key IS the text the
-      # release notes show, so new notes cannot exist without this file moving, and the .swift
-      # alone is a real check. spectacle-2 and yahoo-keykey-2 use abstract keys and must list
-      # their Localizable.strings too.
-      whats_new_path: App/Sources/ClipMenu/WhatsNewConfig.swift
+      whats_new_path: >-
+        App/Sources/ClipMenu/WhatsNewConfig.swift
+        App/Sources/ClipMenu/Resources/en.lproj/Localizable.strings
+        App/Sources/ClipMenu/Resources/es.lproj/Localizable.strings
+        App/Sources/ClipMenu/Resources/fr.lproj/Localizable.strings
+        App/Sources/ClipMenu/Resources/ja.lproj/Localizable.strings
+        App/Sources/ClipMenu/Resources/ko.lproj/Localizable.strings
+        App/Sources/ClipMenu/Resources/ru.lproj/Localizable.strings
+        App/Sources/ClipMenu/Resources/zh-Hans.lproj/Localizable.strings
+        App/Sources/ClipMenu/Resources/zh-Hant.lproj/Localizable.strings
       # Moving the appcast off the marketing site. DONE as of v2.21.0 — the mirror is retired and
       # ClipMenu 2's update feed now lives only in this repository.
       #
