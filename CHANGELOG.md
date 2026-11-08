@@ -4,6 +4,11 @@ Changes in each version of ClipMenu. Each entry is also that version's tag messa
 of its GitHub Release. The in-app What's New pane shows a separate, translated text from
 `App/Sources/ClipMenu/WhatsNewConfig.swift`.
 
+## 2.24.1 (2026-11-08)
+
+A maintenance update to the shared components behind Settings and software updates.
+Updated to DragonKit 4.5.1.
+
 ## 2.24.0 (2026-11-08)
 
 Backup & Restore now uses the shared DragonKit pane. See what a backup saves, browse backups in the pane, reveal the folder in Finder, and restore or delete a backup from its row. Your existing backups, automatic backups, and clipboard history export remain available.

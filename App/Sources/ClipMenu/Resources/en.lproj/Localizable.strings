@@ -300,8 +300,8 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Backup & Restore now uses the shared DragonKit pane.";
-"app.whatsNew.changed1" = "See what a backup saves, browse backups in the pane, reveal the folder in Finder, and restore or delete each backup. Existing backups and clipboard history export remain available.";
+"app.whatsNew.summary" = "Maintenance update.";
+"app.whatsNew.changed1" = "Updated the shared components used by Settings and software updates.";
 
 "All settings, including language and shortcuts" = "All settings, including language and shortcuts";
 "Snippets and folders" = "Snippets and folders";

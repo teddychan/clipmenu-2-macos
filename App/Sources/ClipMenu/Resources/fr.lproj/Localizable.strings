@@ -311,8 +311,8 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "La fenêtre Lire les informations du Finder affiche désormais le copyright de ClipMenu, la même ligne que celle du panneau À propos.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Sauvegarde et restauration utilise désormais le panneau partagé de DragonKit.";
-"app.whatsNew.changed1" = "Consultez le contenu des sauvegardes, parcourez la liste, affichez le dossier dans le Finder et restaurez ou supprimez chaque sauvegarde. Les sauvegardes existantes et l’export de l’historique restent disponibles.";
+"app.whatsNew.summary" = "Mise à jour de maintenance.";
+"app.whatsNew.changed1" = "Mise à jour des composants partagés utilisés par Réglages et les mises à jour logicielles.";
 
 "All settings, including language and shortcuts" = "Tous les réglages, dont la langue et les raccourcis";
 "Snippets and folders" = "Extraits et dossiers";
