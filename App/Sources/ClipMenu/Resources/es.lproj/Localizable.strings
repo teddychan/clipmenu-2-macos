@@ -311,8 +311,8 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "El panel Obtener información del Finder ahora muestra el copyright de ClipMenu, la misma línea que muestra el panel Acerca de.";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Actualización de mantenimiento.";
-"app.whatsNew.changed1" = "Se actualizaron los componentes compartidos de Ajustes y las actualizaciones de software.";
+"app.whatsNew.summary" = "El idioma restaurado se aplica al instante.";
+"app.whatsNew.fixed1" = "Restaurar una copia de los ajustes actualiza el idioma de la app sin reiniciar ClipMenu.";
 
 "All settings, including language and shortcuts" = "Todos los ajustes, incluidos el idioma y los atajos";
 "Snippets and folders" = "Fragmentos y carpetas";

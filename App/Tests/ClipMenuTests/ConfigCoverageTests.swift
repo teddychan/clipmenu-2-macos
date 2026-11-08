@@ -115,14 +115,12 @@ import DragonKit
         #expect(!content.summary.isEmpty)
     }
 
-    /// The shared backup pane is described by one `.changed` entry.
-    ///
     /// Pinned per release alongside the WhatsNewConfig copy itself — the section shape IS the claim,
     /// so updating the notes has to update this, which is the point. The release gate checks that
     /// the notes CHANGED; this checks that they changed to what was meant.
-    @Test func contentIsChangedOnly() {
+    @Test func contentIsFixedOnly() {
         let sections = WhatsNewConfig.content.sections
-        #expect(sections.map(\.kind) == [.changed])
+        #expect(sections.map(\.kind) == [.fixed])
         #expect(sections.map(\.entries.count) == [1])
         for entry in sections.flatMap(\.entries) {
             #expect(!entry.isEmpty)

@@ -310,8 +310,8 @@
 "Finder's Get Info panel now shows ClipMenu's copyright, the same line the About pane shows." = "В окне «Свойства» Finder теперь отображаются авторские права ClipMenu — та же строка, что и в разделе «О программе».";
 
 /* What's New (2.21.1) */
-"app.whatsNew.summary" = "Обновление для обслуживания.";
-"app.whatsNew.changed1" = "Обновлены общие компоненты настроек и обновлений ПО.";
+"app.whatsNew.summary" = "Восстановленный язык применяется сразу.";
+"app.whatsNew.fixed1" = "При восстановлении резервной копии настроек язык приложения обновляется без перезапуска ClipMenu.";
 
 "All settings, including language and shortcuts" = "Все настройки, включая язык и сочетания клавиш";
 "Snippets and folders" = "Фрагменты и папки";
