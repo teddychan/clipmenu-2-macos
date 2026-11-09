@@ -3,8 +3,9 @@ import SwiftData
 import Testing
 @testable import ClipMenu
 
+extension BackupSerialized {
 @MainActor
-@Suite(.serialized)
+@Suite
 struct SettingsBackupTests {
     nonisolated static let keys = [
         "DragonKit.language", "appLanguage", "loginItem", "inputPasteCommand",
@@ -287,4 +288,5 @@ struct SettingsBackupTests {
         #expect(!keys.isEmpty)
         #expect(Set(keys).subtracting(Self.keys).subtracting(["onboardingStep"]).isEmpty)
     }
+}
 }

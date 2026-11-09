@@ -4,8 +4,9 @@ import Testing
 import DragonKit
 @testable import ClipMenu
 
+extension BackupSerialized {
 @MainActor
-@Suite(.serialized)
+@Suite
 struct ClipMenuBackupPaneTests {
     @Test func savedLegacyPaneSelectionMigratesToSharedPane() {
         #expect(ClipMenuBackup.migratedPaneID("syncBackup") == "backup")
@@ -161,6 +162,8 @@ struct ClipMenuBackupPaneTests {
         }
         #expect(try await reopened.backUp(folder) == failing)
     }
+
+}
 
 }
 
