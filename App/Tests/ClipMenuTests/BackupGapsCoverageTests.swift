@@ -103,8 +103,10 @@ import SwiftData
 
 // MARK: - BackupManager: restore/backup edge branches
 
+extension BackupSerialized {
 @MainActor
 @Suite struct BackupManagerGapsTests {
+    private let preferences = BackupTestDefaults()
 
     private func makeContext() throws -> ModelContext {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
@@ -121,7 +123,9 @@ import SwiftData
     }
 
     private func manager(_ store: BackupStore, _ context: ModelContext) -> BackupManager {
-        BackupManager(store: store, context: context, deviceName: "TestMac", appVersion: "9.9.9")
+        BackupManager(store: store, context: context, deviceName: "TestMac", appVersion: "9.9.9",
+                      defaults: preferences.defaults, actionsURL: nil,
+                      loginItemEnabled: { false }, setLoginItemEnabled: { _ in })
     }
 
     private func meta(recordName: String, kind: BackupKind = .manual, schemaVersion: Int = 1,
@@ -165,13 +169,6 @@ import SwiftData
         #expect(folders.count == 1 && folders.first?.title == "A")
     }
 
-    // NOTE: a backUpNow prune-after-save test was removed here — backUpNow calls
-    // cacheBaseline(), which writes the SHARED UserDefaults.standard
-    // lastSnippetBackupDate/Hash keys (not injectable). That raced the sibling
-    // BackupManagerTests.dailyCheck* tests (Swift Testing runs suites in parallel)
-    // and made them intermittently see a skip → count 0. backUpNow's save+prune is
-    // already covered within BackupManagerTests' own (single) suite.
-
     // otherFolderItemCount forwards to the store; MockBackupStore uses the
     // protocol default (0).
     @Test func otherFolderItemCountForwardsStoreDefault() async throws {
@@ -181,10 +178,4 @@ import SwiftData
     }
 }
 
-// NOTE: an earlier draft also exercised BackupScheduler.runIfEligible()'s eligible
-// branch, but that spawns a fire-and-forget Task running runDailyCheck against the
-// live AppStore.container and mutates the shared lastSnippetBackup* UserDefaults
-// keys — which raced BackupManagerTests (sibling suites run in parallel) and made
-// dailyCheckBacksUpEmptyStoreOnceSynced flaky. Its async result was never asserted,
-// so it was removed. runIfEligible()'s synchronous guard/eligibility is covered by
-// BackupSchedulerCoverageTests; runDailyCheck itself by BackupManagerTests.
+}

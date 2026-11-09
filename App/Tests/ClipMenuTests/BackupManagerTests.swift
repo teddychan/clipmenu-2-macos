@@ -48,12 +48,10 @@ actor MockBackupStore: BackupStore {
     }
 }
 
+extension BackupSerialized {
 @MainActor
-// Serialized: backUpNow()/runDailyCheck() call BackupManager.cacheBaseline(), which
-// writes the process-wide UserDefaults.standard lastSnippetBackupDate/Hash keys. With
-// the suite's tests running in parallel they clobber each other's baseline, so a
-// dailyCheck could see a foreign "unchanged" hash and skip the backup it expects.
-@Suite(.serialized) struct BackupManagerTests {
+@Suite struct BackupManagerTests {
+    private let preferences = BackupTestDefaults()
 
     private func makeContext() throws -> ModelContext {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
@@ -70,7 +68,9 @@ actor MockBackupStore: BackupStore {
     }
 
     private func manager(_ store: BackupStore, _ context: ModelContext) -> BackupManager {
-        BackupManager(store: store, context: context, deviceName: "TestMac", appVersion: "9.9.9")
+        BackupManager(store: store, context: context, deviceName: "TestMac", appVersion: "9.9.9",
+                      defaults: preferences.defaults, actionsURL: nil,
+                      loginItemEnabled: { false }, setLoginItemEnabled: { _ in })
     }
 
     @Test func manualBackupCreatesVersion() async throws {
@@ -166,6 +166,34 @@ actor MockBackupStore: BackupStore {
         #expect(try await store.list().count == 1)
     }
 
+    @Test(arguments: [false, true])
+    func dailyCheckIsSuppressedUntilAnotherManagerFinishesRestore(failing: Bool) async throws {
+        let restoreStore = PausedRestoreStore()
+        let restoreManager = manager(restoreStore, try makeContext())
+        guard case let .created(version) = try await restoreManager.backUpNow(kind: .manual) else {
+            Issue.record("Expected restore fixture backup")
+            return
+        }
+        let scheduledStore = MockBackupStore()
+        let scheduledManager = manager(scheduledStore, try makeContext())
+        let restoring = Task { try await restoreManager.restore(version) }
+        await restoreStore.waitUntilPaused()
+
+        await #expect(throws: Never.self) {
+            try await scheduledManager.runDailyCheck(didSyncThisLaunch: true)
+        }
+        #expect(await scheduledStore.versions.isEmpty)
+        await restoreStore.resume(failing: failing)
+        if failing {
+            await #expect(throws: PausedRestoreStore.Failure.self) { try await restoring.value }
+        } else {
+            try await restoring.value
+        }
+
+        try await scheduledManager.runDailyCheck(didSyncThisLaunch: true)
+        #expect(await scheduledStore.versions.count == 1)
+    }
+
     @Test func applyWithRollbackRevertsOnSaveFailure() throws {
         let ctx = try makeContext(); try seed(ctx, folderTitle: "Original", snippet: "x")
         let replacement = SnippetSnapshot(
@@ -204,5 +232,42 @@ actor MockBackupStore: BackupStore {
         #expect(listed.first?.recordName == "rec-24")           // newest first
         #expect(try await store.list().count == BackupRetention.keepNormal)
         #expect(await store.deleted.count == 5)                 // oldest 5 removed
+    }
+}
+}
+
+private actor PausedRestoreStore: BackupStore {
+    enum Failure: Error { case requested }
+    private let base = MockBackupStore()
+    private var suspension: CheckedContinuation<Void, Never>?
+    private var waiter: CheckedContinuation<Void, Never>?
+    private var shouldFail = false
+
+    func ensureZone() async throws {}
+    func list() async throws -> [BackupVersionMeta] { try await base.list() }
+    func save(payload: Data, meta: BackupSaveMeta) async throws -> BackupVersionMeta {
+        try await base.save(payload: payload, meta: meta)
+    }
+    func delete(recordNames: [String]) async throws { try await base.delete(recordNames: recordNames) }
+
+    func fetchPayload(recordName: String) async throws -> Data {
+        await withCheckedContinuation { continuation in
+            suspension = continuation
+            waiter?.resume()
+            waiter = nil
+        }
+        if shouldFail { throw Failure.requested }
+        return try await base.fetchPayload(recordName: recordName)
+    }
+
+    func waitUntilPaused() async {
+        guard suspension == nil else { return }
+        await withCheckedContinuation { waiter = $0 }
+    }
+
+    func resume(failing: Bool) {
+        shouldFail = failing
+        suspension?.resume()
+        suspension = nil
     }
 }
